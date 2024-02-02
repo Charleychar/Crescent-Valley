@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground Floor
+    uniqueID: 4273254455
+    locked: 0
+  - name: First Floor
+    uniqueID: 261029661
+    locked: 0
+  - name: Top Floor
+    uniqueID: 670335187
+    locked: 0
+  - name: Colliders
+    uniqueID: 2841929131
+    locked: 0
+  - name: Player
+    uniqueID: 1794219531
+    locked: 0
