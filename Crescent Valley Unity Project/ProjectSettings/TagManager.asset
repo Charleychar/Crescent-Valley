@@ -53,6 +53,9 @@ TagManager:
   - name: Colliders
     uniqueID: 2841929131
     locked: 0
+  - name: Rooms
+    uniqueID: 3533495261
+    locked: 0
   - name: Player
     uniqueID: 1794219531
     locked: 0
