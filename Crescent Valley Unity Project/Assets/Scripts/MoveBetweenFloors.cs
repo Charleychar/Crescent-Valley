@@ -26,6 +26,15 @@ public class MoveBetweenFloors : MonoBehaviour
         if (this.gameObject.transform.position == firstToGround.transform.position)
         {
             player.transform.position = newPos.position;
+            //PositionCheck();
         }
     }
+
+    //public void PositionCheck()
+    //{
+    //    if (player.transform.position = newPos.position)
+    //    {
+    //        print("moved");
+    //    }
+    //}
 }
