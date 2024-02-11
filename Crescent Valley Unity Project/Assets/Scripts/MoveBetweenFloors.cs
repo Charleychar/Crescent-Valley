@@ -28,12 +28,6 @@ public class MoveBetweenFloors : MonoBehaviour
         topToFirst = GameObject.Find("TopToFirst");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (this.gameObject.transform.position == firstToGround.transform.position)
