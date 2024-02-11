@@ -17,14 +17,19 @@ public class PauseMenu : MonoBehaviour
         player = GameObject.Find("Player Sprite");
     }
 
-    // Update is called once per frame
+    //opening and closing menu
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && pause.enabled == false)
         {
             pause.enabled = true;
             player.GetComponent<PlayerMovement>().enabled = false;
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) && pause.enabled == true)
+        {
+            pause.enabled = false;
+            player.GetComponent<PlayerMovement>().enabled = true;
+        }        
     }
 
     public void Resume()

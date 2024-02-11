@@ -19,31 +19,15 @@ public class InventoryMenu : MonoBehaviour
     //opening and closing menu
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {         
-            OpenMenu();        
-        }      
-    }
-
-    public void OpenMenu()
-    {
-        //print("menu");
-        inventory.enabled = true;
-        player.GetComponent<PlayerMovement>().enabled = false;
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.F) && inventory.enabled == false)
         {
-            print("close");
-            CloseMenu();   
+            inventory.enabled = true;
+            player.GetComponent<PlayerMovement>().enabled = false;
+        } 
+        else if (Input.GetKeyDown(KeyCode.F) && inventory.enabled == true)
+        {
+            inventory.enabled = false;
+            player.GetComponent<PlayerMovement>().enabled = true;
         }
-
-    }
-
-    public void CloseMenu()
-    {
-        inventory.enabled = false;
-        player.GetComponent<PlayerMovement>().enabled = true;
-    }
-
-    
+    }    
 }
