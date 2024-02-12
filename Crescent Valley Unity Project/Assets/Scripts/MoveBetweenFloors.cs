@@ -30,10 +30,10 @@ public class MoveBetweenFloors : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (this.gameObject.transform.position == firstToGround.transform.position)
+        /*if (this.gameObject.transform.position == firstToGround.transform.position)
         {
             player.transform.position = groundNewPos.position;    
-        }
+        }*/
 
         if (this.gameObject.transform.position == groundToFirst.transform.position)
         {
