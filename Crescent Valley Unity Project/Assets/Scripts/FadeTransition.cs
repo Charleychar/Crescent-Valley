@@ -5,12 +5,40 @@ using UnityEngine.UI;
 
 public class FadeTransition : MonoBehaviour
 {
-    [SerializeField] Canvas canvas;
-    public GameObject blackOverlay;
+    [SerializeField] GameObject blackOverlay;
+    [SerializeField] float fadeRate;
+    [SerializeField] Image overlayComponent;
 
+    private void Start()
+    {
+        blackOverlay = GameObject.Find("FadeToBlack");
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        StartCoroutine("FadeOut");
+    }
+    private IEnumerator FadeOut()
+    {
+        for (float _alpha = overlayComponent.color.a; _alpha <= 1; _alpha += Time.deltaTime)
+        {
+            overlayComponent.color = new Color(overlayComponent.color.r, overlayComponent.color.g, overlayComponent.color.b, _alpha);
+            yield return null;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        StartCoroutine("FadeIn");
+    }
+    private IEnumerator FadeIn()
+    {
+        for (float _alpha = overlayComponent.color.a; _alpha >= 0; _alpha -= Time.deltaTime)
+        {
+            overlayComponent.color = new Color(overlayComponent.color.r, overlayComponent.color.g, overlayComponent.color.b, _alpha);
+            yield return null;
+        }
+    }
     
-    // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         blackOverlay = GameObject.Find("FadeToBlack");
         canvas.enabled = false;
@@ -62,7 +90,7 @@ public class FadeTransition : MonoBehaviour
                 yield return null;
             }
         }
-    }
+    }*/
 
     //public IEnumerator FadeTransitionAwayFromBlack(bool fade = true, float fadeSpeed = 5)
     //{
