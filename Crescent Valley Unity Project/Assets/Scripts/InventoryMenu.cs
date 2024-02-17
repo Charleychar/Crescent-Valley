@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryMenu : MonoBehaviour
 {
     [SerializeField] Canvas inventory;
+    [SerializeField] Canvas journalUI;
 
     GameObject player;
     
@@ -12,6 +13,7 @@ public class InventoryMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        journalUI.enabled = false;
         inventory.enabled = false;
         player = GameObject.Find("Player Sprite");
     }
@@ -29,5 +31,11 @@ public class InventoryMenu : MonoBehaviour
             inventory.enabled = false;
             player.GetComponent<PlayerMovement>().enabled = true;
         }
-    }    
+    }
+    
+    public void OpenJournal()
+    {
+        journalUI.enabled = true;
+        inventory.enabled = false;
+    }
 }

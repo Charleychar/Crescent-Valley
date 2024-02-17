@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] Canvas pause;
+    [SerializeField] Canvas journalUI;
 
     GameObject player;
+    
     
     
     // Start is called before the first frame update
