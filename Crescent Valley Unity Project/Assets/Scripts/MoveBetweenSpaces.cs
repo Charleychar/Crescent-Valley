@@ -12,10 +12,10 @@ public class MoveBetweenSpaces : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Invoke("TransitionLocation", timeToTransition);
+        Invoke("MovePlayer", timeToTransition);
     }
 
-    public void TransitionLocation()
+    public void MovePlayer()
     {
         player.transform.position = newPos;
     }
