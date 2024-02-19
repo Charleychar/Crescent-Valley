@@ -10,9 +10,8 @@ public class MoveBetweenSpaces : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        //if (player.transform.position == this.gameObject.transform.position)
         Invoke("MovePlayer", timeToTransition);
     }
 
