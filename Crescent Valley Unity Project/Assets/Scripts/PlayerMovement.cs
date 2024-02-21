@@ -25,5 +25,12 @@ public class PlayerMovement : MonoBehaviour
         playerRigid.velocity = moveInput * walkSpeed;
     }
 
-    
+    public void EnableMovement()
+    {
+        playerRigid.WakeUp();
+    }
+    public void DisableMovement()
+    {
+        playerRigid.Sleep();
+    }
 }

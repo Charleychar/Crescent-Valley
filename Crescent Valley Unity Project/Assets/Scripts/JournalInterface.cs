@@ -5,16 +5,16 @@ using UnityEngine;
 public class JournalInterface : MonoBehaviour
 {
     [SerializeField] Canvas journalUI;
-    [SerializeField] WhichPage[] whichPage;
+    [SerializeField] int currentPage = 0;
 
     GameObject player;
+
     
     // Start is called before the first frame update
     void Start()
     {
         journalUI.enabled = false;
-        player = GameObject.Find("Player Sprite");
-        
+        player = GameObject.Find("Player Sprite");    
     }
 
     // Update is called once per frame
@@ -26,15 +26,53 @@ public class JournalInterface : MonoBehaviour
             journalUI.enabled = false;
             player.GetComponent<PlayerMovement>().enabled = true;
         }
+        
+        SetPageActive();
+        SwitchPages();
     }
 
-    [System.Serializable]
-    private class WhichPage
+    private void SwitchPages()
     {
-        public Pages page;
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (currentPage >= 5)
+            {
+                currentPage = 0;
+            }
+            else
+            {
+                currentPage++;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (currentPage <= 0)
+            {
+                currentPage = 5;
+            }
+            else
+            {
+                currentPage--;
+            }
+        }
     }
 
-
-
-    
+    private void SetPageActive()
+    {
+        int pageIndex = 0;
+        
+        foreach(Transform page in transform)
+        {
+            if (pageIndex == currentPage)
+            {
+                page.gameObject.SetActive(true);
+            }
+            else if (pageIndex != currentPage)
+            {
+                page.gameObject.SetActive(false);
+            }
+            pageIndex++;
+        }
+    }
 }

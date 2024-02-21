@@ -9,16 +9,19 @@ public class FadeTransition : MonoBehaviour
     [SerializeField] float fadeRate;
     [SerializeField] Image overlayComponent;
 
-    GameObject player;
+    private GameObject player;
+    private PlayerMovement PM;
 
     private void Start()
     {
-        player = GameObject.Find("Player Sprite");
+        player = GameObject.Find("Player");
+        PM = player.GetComponent<PlayerMovement>();
         blackOverlay = GameObject.Find("FadeToBlack");    
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        PM.DisableMovement();
         player.GetComponent<PlayerMovement>().enabled = false;
         StartCoroutine("FadeOut");          
     }
@@ -33,6 +36,7 @@ public class FadeTransition : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {      
         player.GetComponent<PlayerMovement>().enabled = true;
+        PM.EnableMovement();
         StartCoroutine("FadeIn");
     }
     private IEnumerator FadeIn()
