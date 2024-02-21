@@ -6,6 +6,7 @@ public class InventoryMenu : MonoBehaviour
 {
     [SerializeField] Canvas inventory;
     [SerializeField] Canvas journalUI;
+    [SerializeField] Journal journalFunction;
 
     GameObject player;
     
@@ -15,7 +16,7 @@ public class InventoryMenu : MonoBehaviour
     {
         journalUI.enabled = false;
         inventory.enabled = false;
-        player = GameObject.Find("Player Sprite");
+        player = GameObject.Find("Player");
     }
 
     //opening and closing menu
@@ -36,6 +37,7 @@ public class InventoryMenu : MonoBehaviour
     public void OpenJournal()
     {
         journalUI.enabled = true;
+        journalFunction.enabled = true;
         inventory.enabled = false;
     }
 }
