@@ -30,7 +30,7 @@ public class JournalEntries : MonoBehaviour
             entryCanvas.SetActive(true);
             //print("interact");
             //StartCoroutine("EntryAddedUIAppear");
-            respectiveEntry.enabled = true;
+            //respectiveEntry.enabled = true;
         }
 
     }
