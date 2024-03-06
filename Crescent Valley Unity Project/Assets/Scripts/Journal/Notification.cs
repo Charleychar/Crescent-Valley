@@ -15,7 +15,7 @@ public class Notification : MonoBehaviour
     {
         respectiveNotification.SetActive(false);
         anim = respectiveNotification.GetComponent<Animator>();
-        //respectiveNotification.GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 0);
+        respectiveNotification.GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 0);
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class Notification : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         respectiveNotification.SetActive(true);
-
+        respectiveNotification.GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 1);
         anim.SetTrigger("playerInRange");
 
     }
