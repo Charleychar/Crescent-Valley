@@ -8,6 +8,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] VideoPlayer cutscene;
     [SerializeField] VideoClip cutscene3;
     [SerializeField] BoxCollider2D idaSceneCollider;
+    [SerializeField] JournalMechanicIntro journalIntro;
     private bool ImportantCutscenesPlayed;
     
     
@@ -41,6 +42,18 @@ public class CutsceneManager : MonoBehaviour
         if (CutsceneNo == 3)
         {
             ImportantCutscenesPlayed = true;
+            StartCoroutine("WaitForTutorial");
         }
+        
+        //if (CutsceneNo == 3 && cutscene.isPaused)
+        //{
+        //    journalIntro.StartJournalTutorial();
+        //}
+    }
+
+    private IEnumerator WaitForTutorial()
+    {
+        yield return new WaitForSeconds(25);
+        journalIntro.StartJournalTutorial();
     }
 }

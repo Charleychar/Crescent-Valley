@@ -22,11 +22,11 @@ public class CutsceneTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.CompareTag(PlayerTag))
         {
             if (CutsceneNo == 4)
@@ -45,6 +45,7 @@ public class CutsceneTrigger : MonoBehaviour
 
     private void PlayCutscene()
     {
+        
         MyCollider.enabled = false;
         cutsceneManager.CutscenePlayed(CutsceneNo);
         CutsceneObject.PlayCutscene(MyClip);

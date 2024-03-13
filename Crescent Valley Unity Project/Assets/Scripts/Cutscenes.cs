@@ -6,6 +6,7 @@ using UnityEngine.Video;
 public class Cutscenes : MonoBehaviour
 {
     [SerializeField] VideoPlayer cutscenePlayer;
+    [SerializeField] CutsceneManager cutsceneManager;
 
     GameObject player;
     PlayerMovement PM;
@@ -26,8 +27,12 @@ public class Cutscenes : MonoBehaviour
             cutscenePlayer.clip = null;
             player.GetComponent<PlayerMovement>().enabled = true;
             PM.EnableMovement();
-        }
-        
+
+            //if (cutsceneManager.HasCutscenePlayed())
+            //{
+            //    journalIntro.StartJournalTutorial();
+            //}
+        }    
     }
 
     public void PlayCutscene(VideoClip newClip)
@@ -36,7 +41,5 @@ public class Cutscenes : MonoBehaviour
         cutscenePlayer.Play();
         PM.DisableMovement();
         player.GetComponent<PlayerMovement>().enabled = false;
-        
-
     }
 }
