@@ -5,29 +5,38 @@ using UnityEngine.Video;
 
 public class Cutscenes : MonoBehaviour
 {
-    [SerializeField] VideoPlayer CutscenePlayer;
+    [SerializeField] VideoPlayer cutscenePlayer;
+
+    GameObject player;
+    PlayerMovement PM;
     
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CutscenePlayer.isPaused)
+        if (cutscenePlayer.isPaused)
         {
-            CutscenePlayer.Stop();
-            CutscenePlayer.clip = null;
+            cutscenePlayer.Stop();
+            cutscenePlayer.clip = null;
+            player.GetComponent<PlayerMovement>().enabled = true;
+            PM.EnableMovement();
         }
         
     }
 
     public void PlayCutscene(VideoClip newClip)
     {
-        CutscenePlayer.clip = newClip;
-        CutscenePlayer.Play();
+        cutscenePlayer.clip = newClip;
+        cutscenePlayer.Play();
+        PM.DisableMovement();
+        player.GetComponent<PlayerMovement>().enabled = false;
+        
+
     }
 }

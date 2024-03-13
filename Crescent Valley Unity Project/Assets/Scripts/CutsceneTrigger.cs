@@ -45,8 +45,9 @@ public class CutsceneTrigger : MonoBehaviour
 
     private void PlayCutscene()
     {
+        MyCollider.enabled = false;
         cutsceneManager.CutscenePlayed(CutsceneNo);
         CutsceneObject.PlayCutscene(MyClip);
-        MyCollider.enabled = false;
+        
     }
 }
