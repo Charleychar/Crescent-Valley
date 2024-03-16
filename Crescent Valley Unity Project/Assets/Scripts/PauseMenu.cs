@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pause.enabled = false;
-        player = GameObject.Find("Player Sprite");
+        player = GameObject.Find("Player");
     }
 
     //opening and closing menu
