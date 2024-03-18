@@ -32,7 +32,7 @@ public class JournalMechanicIntro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && line2.enabled == false)
+        if (Input.GetKeyDown(KeyCode.Space) && line2.enabled == false && journalTutorialCanvas == true)
         {
             line1.enabled = false;
             line2.enabled = true;
@@ -43,6 +43,7 @@ public class JournalMechanicIntro : MonoBehaviour
             journalTutorialCanvas.enabled = false;
             journalUI.enabled = false;
             cutscenePlayer.PlayCutscene(idaFlower2);
+            line2.enabled = false;
         }
     }
 
@@ -63,8 +64,8 @@ public class JournalMechanicIntro : MonoBehaviour
         journalTutorialCanvas.enabled = true;
         journalUI.enabled = true;
         journal.GetComponent<Journal>().enabled = true;
-        //player.GetComponent<PlayerMovement>().DisableMovement();
-        //player.GetComponent<PlayerMovement>().enabled = false;
+        player.GetComponent<PlayerMovement>().DisableMovement();
+        player.GetComponent<PlayerMovement>().enabled = false;
 
     }
 

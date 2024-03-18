@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -9,13 +10,14 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] VideoClip cutscene3;
     [SerializeField] BoxCollider2D idaSceneCollider;
     [SerializeField] JournalMechanicIntro journalIntro;
+    [SerializeField] Image flowerDrawing;
     private bool ImportantCutscenesPlayed;
     
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        flowerDrawing.enabled = false;
     }
 
     // Update is called once per frame
@@ -53,7 +55,8 @@ public class CutsceneManager : MonoBehaviour
 
     private IEnumerator WaitForTutorial()
     {
-        yield return new WaitForSeconds(25);
+        yield return new WaitForSeconds(25.5f);
+        flowerDrawing.enabled = true;
         journalIntro.StartJournalTutorial();
     }
 }
