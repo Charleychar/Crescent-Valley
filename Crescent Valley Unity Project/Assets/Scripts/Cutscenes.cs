@@ -39,7 +39,8 @@ public class Cutscenes : MonoBehaviour
     {
         cutscenePlayer.clip = newClip;
         cutscenePlayer.Play();
-        PM.DisableMovement();
+        //PM.DisableMovement();
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.GetComponent<PlayerMovement>().enabled = false;
     }
 }

@@ -12,14 +12,16 @@ public class JournalEntries : MonoBehaviour
     [SerializeField] Image respectiveEntry;
     bool tree = false;
 
-    
-    
-    
+
+    private void Awake()
+    {
+        entryCanvas = GameObject.Find("Entry Added");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         respectiveEntry.enabled = false;
-        entryCanvas = GameObject.Find("Entry Added");
         entryCanvas.SetActive(false);
     }
 
