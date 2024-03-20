@@ -6,10 +6,14 @@ using UnityEngine.UI;
 
 public class CutsceneTrigger : MonoBehaviour
 {
-    [SerializeField] CutsceneManager cutsceneManager;
+    private CutsceneManager cutsceneManager;
     [SerializeField] int FirstSlide;
     [SerializeField] int LastSlide;
 
+    private void Start()
+    {
+        cutsceneManager = FindObjectOfType<CutsceneManager>();
+    }
     public void TriggerCutscene()
     {
         cutsceneManager.ActivateCutscene(FirstSlide, LastSlide);

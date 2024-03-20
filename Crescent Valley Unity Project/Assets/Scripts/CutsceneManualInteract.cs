@@ -21,7 +21,7 @@ public class CutsceneManualInteract : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && PlayerNearby)
+        if (Input.GetKeyDown(KeyCode.E) && PlayerNearby)
         {
             PlayCutscene();
         }
