@@ -25,12 +25,14 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && pause.enabled == false)
         {
             pause.enabled = true;
+            player.GetComponent<PlayerMovement>().DisableMovement();
             player.GetComponent<PlayerMovement>().enabled = false;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && pause.enabled == true)
         {
             pause.enabled = false;
             player.GetComponent<PlayerMovement>().enabled = true;
+            player.GetComponent<PlayerMovement>().EnableMovement();
         }        
     }
 
