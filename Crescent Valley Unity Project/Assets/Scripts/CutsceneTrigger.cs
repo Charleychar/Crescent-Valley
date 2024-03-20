@@ -1,54 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
+using UnityEngine.UI;
+
 
 public class CutsceneTrigger : MonoBehaviour
 {
-    [SerializeField] Cutscenes CutsceneObject;
-    [SerializeField] VideoClip MyClip;
-    [SerializeField] BoxCollider2D MyCollider;
-    [SerializeField] string PlayerTag;
-    [SerializeField] int CutsceneNo;
-
     [SerializeField] CutsceneManager cutsceneManager;
-    
-    
-    void Start()
-    {
-        
-    }
+    [SerializeField] int FirstSlide;
+    [SerializeField] int LastSlide;
 
-    // Update is called once per frame
-    void Update()
+    public void TriggerCutscene()
     {
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-        if (collision.CompareTag(PlayerTag))
-        {
-            if (CutsceneNo == 4)
-            {
-                if (cutsceneManager.HasCutscenePlayed())
-                {
-                    PlayCutscene();
-                }
-            }
-            else
-            {
-                PlayCutscene();
-            }
-        }
-    }
-
-    private void PlayCutscene()
-    {
-        
-        MyCollider.enabled = false;
-        cutsceneManager.CutscenePlayed(CutsceneNo);
-        CutsceneObject.PlayCutscene(MyClip);
-        
+        cutsceneManager.ActivateCutscene(FirstSlide, LastSlide);
     }
 }

@@ -5,59 +5,45 @@ using UnityEngine.Video;
 
 public class CutsceneManualInteract : MonoBehaviour
 {
+    private CutsceneTrigger MyTrigger;
+    private BoxCollider2D MyCollider;
+    private string PlayerTag;
+    private bool PlayerNearby;
 
-    //Cutscenes cutscenePlayScript;
-    [SerializeField] VideoClip respectiveCutscene;
-    [SerializeField] VideoPlayer cutscenePlayer;
-    [SerializeField] BoxCollider2D benCollider;
 
-    bool ben = false;
-    GameObject player;
-    PlayerMovement PM;
-    
-    
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
+        MyTrigger = GetComponent<CutsceneTrigger>();
+        MyCollider = GetComponent<BoxCollider2D>();
+        PlayerTag = "Player";
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (cutscenePlayer.isPaused)
+        if (Input.GetKeyDown(KeyCode.Space) && PlayerNearby)
         {
-            cutscenePlayer.Stop();
-            cutscenePlayer.clip = null;
-            player.GetComponent<PlayerMovement>().enabled = true;
-            PM.EnableMovement();
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && ben == true)
-        {
-            PlayCutscene(respectiveCutscene);
+            PlayCutscene();
         }
     }
-
+    private void PlayCutscene()
+    {
+        MyCollider.enabled = false;
+        MyTrigger.TriggerCutscene();
+        PlayerNearby = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ben = true;
+        if (collision.CompareTag(PlayerTag))
+        {
+            PlayerNearby = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        ben = false;
+        if (collision.CompareTag(PlayerTag))
+        {
+            PlayerNearby = false;
+        }
     }
-
-    public void PlayCutscene(VideoClip newClip)
-    {
-        cutscenePlayer.clip = newClip;
-        cutscenePlayer.Play();
-        benCollider.enabled = false;
-        PM.DisableMovement();
-        player.GetComponent<PlayerMovement>().enabled = false;
-    }
-
-    
-
 }
