@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CollisionCutscene : MonoBehaviour
 {
-    private CutsceneTrigger MyTrigger;
+    [SerializeField] BoxCollider2D idaFlowerCollider;
+    private CutsceneTrigger cutsceneTrigger;
     private BoxCollider2D MyCollider;
     private string PlayerTag;
     private void Start()
     {
-        MyTrigger = GetComponent<CutsceneTrigger>();
+        cutsceneTrigger = GetComponent<CutsceneTrigger>();
         MyCollider = GetComponent<BoxCollider2D>();
         PlayerTag = "Player";
     }
@@ -22,7 +23,19 @@ public class CollisionCutscene : MonoBehaviour
     }
     private void PlayCutscene()
     {
-        MyCollider.enabled = false;
-        MyTrigger.TriggerCutscene();
+        if (idaFlowerCollider.enabled == true && this.gameObject.name == "Dining hall")
+        {
+            return;
+        }
+        else if (idaFlowerCollider.enabled == true && this.gameObject.name == "Dining hall 2")
+        {
+            return;
+        }
+        else
+        {
+            MyCollider.enabled = false;
+            cutsceneTrigger.TriggerCutscene();
+        }    
+      
     }
 }
