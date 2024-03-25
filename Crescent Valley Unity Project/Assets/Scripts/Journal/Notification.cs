@@ -5,6 +5,7 @@ using UnityEngine;
 public class Notification : MonoBehaviour
 {
     [SerializeField] GameObject respectiveNotification;
+    [SerializeField] GameObject entryItem;
 
     Animator anim;
     
@@ -21,7 +22,10 @@ public class Notification : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (entryItem.activeInHierarchy == false)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

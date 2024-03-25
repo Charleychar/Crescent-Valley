@@ -30,6 +30,7 @@ public class JournalEntries : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && tree)
         {
             entryCanvas.SetActive(true);
+            
             //print("interact");
             //StartCoroutine("EntryAddedUIAppear");
             //respectiveEntry.enabled = true;
@@ -52,6 +53,7 @@ public class JournalEntries : MonoBehaviour
     {
         tree = false;
         StartCoroutine("EntryAddedUIDisappear");
+        
     }
 
     private IEnumerator EntryAddedUIAppear()
@@ -72,6 +74,8 @@ public class JournalEntries : MonoBehaviour
             entryAdded.color = new Color(entryAdded.color.r, entryAdded.color.g, entryAdded.color.b, _alpha);
             yield return null;
         }
+
+        gameObject.SetActive(false);
     }
 
 }

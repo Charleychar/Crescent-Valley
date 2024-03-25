@@ -52,6 +52,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] PlayerMovement PM;
     [SerializeField] Image CurrentCutsceneSlide;
     [SerializeField] Sprite[] CutsceneSlides;
+   
     private bool CutsceneActive;
     private int CurrentCutsceneNo;
     private int LastQueuedCutsceneNo;
