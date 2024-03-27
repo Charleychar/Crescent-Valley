@@ -9,6 +9,8 @@ public class IdaNoiseScene : MonoBehaviour
     [SerializeField] BoxCollider2D diningScene1;
     [SerializeField] BoxCollider2D diningScene2;
     [SerializeField] BoxCollider2D idaFlowerScene;
+    [SerializeField] GameObject player;
+    [SerializeField] Vector2 newPos;
 
     void Start()
     {
@@ -24,5 +26,9 @@ public class IdaNoiseScene : MonoBehaviour
     public void StartScene()
     {
         cutceneTrigger.TriggerCutscene();
+        player.transform.position = newPos;
+
+        diningScene1.enabled = false;
+        diningScene2.enabled = false;
     }
 }

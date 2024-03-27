@@ -105,7 +105,8 @@ public class CutsceneManager : MonoBehaviour
         StartCoroutine("FadeOut");  
         CutsceneActive = false;  
         CutsceneObject.SetActive(false);
-        PM.EnableMovement();                              
+        PM.EnableMovement();
+        
     }
 
     private IEnumerator FadeOut()
@@ -116,29 +117,34 @@ public class CutsceneManager : MonoBehaviour
             yield return null;  
         }
 
-        RemoveOverlay();
+        StartCoroutine("FadeIn");
     }
 
-    //private IEnumerator FadeIn()
-    //{
-    //    for (float _alpha = overlayComponent.color.a; _alpha >= 0; _alpha -= Time.deltaTime)
-    //    {
-    //        overlayComponent.color = new Color(overlayComponent.color.r, overlayComponent.color.g, overlayComponent.color.b, _alpha);
-    //        yield return null;
-    //    }
-    //}
-
-    private void RemoveOverlay()
+    private IEnumerator FadeIn()
     {
-        overlayComponent.color = new Color(overlayComponent.color.r, overlayComponent.color.g, overlayComponent.color.b, 0);   
-        
-        if (diningScene1.enabled == true && diningScene2.enabled == true)
+        for (float _alpha = overlayComponent.color.a; _alpha >= 0; _alpha -= Time.deltaTime)
         {
-            return;
+            overlayComponent.color = new Color(overlayComponent.color.r, overlayComponent.color.g, overlayComponent.color.b, _alpha);
+            yield return null;
+        }
+
+        StartIdaScene();
+    }
+
+    private void StartIdaScene()
+    {
+
+        if (diningScene1.enabled == true && diningScene2.enabled == false)
+        {
+            idaNoiseScene.StartScene();
+        }
+        else if (diningScene1.enabled == false && diningScene2.enabled == true)
+        {
+            idaNoiseScene.StartScene();
         }
         else
         {
-            idaNoiseScene.StartScene();
+            return;
         }
     }
 }
