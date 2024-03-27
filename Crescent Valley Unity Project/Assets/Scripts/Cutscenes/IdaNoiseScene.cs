@@ -6,6 +6,10 @@ public class IdaNoiseScene : MonoBehaviour
 {
     private CutsceneTrigger cutceneTrigger;
 
+    [SerializeField] BoxCollider2D diningScene1;
+    [SerializeField] BoxCollider2D diningScene2;
+    [SerializeField] BoxCollider2D idaFlowerScene;
+
     void Start()
     {
         cutceneTrigger = GetComponent<CutsceneTrigger>();
@@ -14,6 +18,11 @@ public class IdaNoiseScene : MonoBehaviour
     
     void Update()
     {
-        //if ()
+
+    }
+
+    public void StartScene()
+    {
+        cutceneTrigger.TriggerCutscene();
     }
 }

@@ -7,6 +7,7 @@ public class CutsceneManualInteract : MonoBehaviour
 {
     [SerializeField] BoxCollider2D diningScene1;
     [SerializeField] BoxCollider2D diningScene2;
+    [SerializeField] BoxCollider2D alexWokenScene;
     
     private CutsceneTrigger cutsceneTrigger;
     private BoxCollider2D MyCollider;
@@ -40,7 +41,18 @@ public class CutsceneManualInteract : MonoBehaviour
             MyCollider.enabled = false;
             cutsceneTrigger.TriggerCutscene();
             PlayerNearby = false;
-        }   
+        } 
+        
+        if (alexWokenScene.enabled == true && this.gameObject.name == "Cupboard under the stairs")
+        {
+            return;
+        }
+        else
+        {
+            MyCollider.enabled = false;
+            cutsceneTrigger.TriggerCutscene();
+            PlayerNearby = false;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

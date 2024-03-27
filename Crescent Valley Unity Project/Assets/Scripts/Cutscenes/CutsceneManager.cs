@@ -48,15 +48,26 @@ public class CutsceneManager : MonoBehaviour
         journalIntro.StartJournalTutorial();
     }*/
 
+    private IdaNoiseScene idaNoiseScene;
+    
     [SerializeField] GameObject CutsceneObject;
     [SerializeField] PlayerMovement PM;
     [SerializeField] Image CurrentCutsceneSlide;
     [SerializeField] Sprite[] CutsceneSlides;
     [SerializeField] Image overlayComponent;
 
+    [SerializeField] BoxCollider2D diningScene1;
+    [SerializeField] BoxCollider2D diningScene2;
+
     private bool CutsceneActive;
     private int CurrentCutsceneNo;
-    private int LastQueuedCutsceneNo;   
+    private int LastQueuedCutsceneNo;
+
+    private void Start()
+    {
+        idaNoiseScene = FindObjectOfType<IdaNoiseScene>();
+    }
+
 
 
     public void ActivateCutscene(int FirstCutsceneNo, int LastCutsceneNo)
@@ -92,7 +103,7 @@ public class CutsceneManager : MonoBehaviour
     private void ExitCutscene()
     {
         StartCoroutine("FadeOut");  
-        CutsceneActive = false;
+        CutsceneActive = false;  
         CutsceneObject.SetActive(false);
         PM.EnableMovement();                              
     }
@@ -104,15 +115,30 @@ public class CutsceneManager : MonoBehaviour
             overlayComponent.color = new Color(overlayComponent.color.r, overlayComponent.color.g, overlayComponent.color.b, _alpha);
             yield return null;  
         }
-        StartCoroutine("FadeIn");
+
+        RemoveOverlay();
     }
 
-    private IEnumerator FadeIn()
+    //private IEnumerator FadeIn()
+    //{
+    //    for (float _alpha = overlayComponent.color.a; _alpha >= 0; _alpha -= Time.deltaTime)
+    //    {
+    //        overlayComponent.color = new Color(overlayComponent.color.r, overlayComponent.color.g, overlayComponent.color.b, _alpha);
+    //        yield return null;
+    //    }
+    //}
+
+    private void RemoveOverlay()
     {
-        for (float _alpha = overlayComponent.color.a; _alpha >= 0; _alpha -= Time.deltaTime)
+        overlayComponent.color = new Color(overlayComponent.color.r, overlayComponent.color.g, overlayComponent.color.b, 0);   
+        
+        if (diningScene1.enabled == true && diningScene2.enabled == true)
         {
-            overlayComponent.color = new Color(overlayComponent.color.r, overlayComponent.color.g, overlayComponent.color.b, _alpha);
-            yield return null;
+            return;
+        }
+        else
+        {
+            idaNoiseScene.StartScene();
         }
     }
 }
