@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using TMPro;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -54,6 +55,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] PlayerMovement PM;
     [SerializeField] Image CurrentCutsceneSlide;
     [SerializeField] Sprite[] CutsceneSlides;
+    [SerializeField] TextMeshProUGUI[] cutsceneDialogue;
     [SerializeField] Image overlayComponent;
 
     [SerializeField] BoxCollider2D diningScene1;
@@ -128,23 +130,7 @@ public class CutsceneManager : MonoBehaviour
             yield return null;
         }
 
-        StartIdaScene();
+        idaNoiseScene.StartIdaScene();
     }
 
-    private void StartIdaScene()
-    {
-
-        if (diningScene1.enabled == true && diningScene2.enabled == false)
-        {
-            idaNoiseScene.StartScene();
-        }
-        else if (diningScene1.enabled == false && diningScene2.enabled == true)
-        {
-            idaNoiseScene.StartScene();
-        }
-        else
-        {
-            return;
-        }
-    }
 }

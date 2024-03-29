@@ -23,6 +23,27 @@ public class IdaNoiseScene : MonoBehaviour
 
     }
 
+    public void StartIdaScene()
+    {
+
+        if (diningScene1.enabled == true && diningScene2.enabled == false)
+        {
+            StartScene();
+        }
+        else if (diningScene1.enabled == false && diningScene2.enabled == true)
+        {
+            StartScene();
+        }
+        else
+        {
+            return;
+        }
+    }
+
+
+
+
+
     public void StartScene()
     {
         cutceneTrigger.TriggerCutscene();
