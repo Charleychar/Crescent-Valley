@@ -61,6 +61,9 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] BoxCollider2D diningScene1;
     [SerializeField] BoxCollider2D diningScene2;
 
+    [SerializeField] Canvas inventory;
+    [SerializeField] Canvas journal;
+
     private bool CutsceneActive;
     private int CurrentCutsceneNo;
     private int LastQueuedCutsceneNo;
@@ -80,6 +83,8 @@ public class CutsceneManager : MonoBehaviour
         CurrentCutsceneSlide.sprite = CutsceneSlides[FirstCutsceneNo];
         LastQueuedCutsceneNo = LastCutsceneNo;
         PM.DisableMovement();
+        journal.enabled = false;
+        inventory.enabled = false;
     }
 
     private void Update()
@@ -108,6 +113,8 @@ public class CutsceneManager : MonoBehaviour
         CutsceneActive = false;  
         CutsceneObject.SetActive(false);
         PM.EnableMovement();
+        journal.enabled = true;
+        inventory.enabled = true;
         
     }
 
