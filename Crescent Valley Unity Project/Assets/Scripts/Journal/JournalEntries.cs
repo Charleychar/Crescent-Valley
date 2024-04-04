@@ -11,6 +11,7 @@ public class JournalEntries : MonoBehaviour
     [SerializeField] Image entryAdded;
     [SerializeField] Image respectiveEntry;
     bool tree = false;
+    
 
 
     private void Awake()
@@ -23,6 +24,7 @@ public class JournalEntries : MonoBehaviour
     {
         respectiveEntry.enabled = false;
         entryCanvas.SetActive(false);
+        
     }
 
     void Update()
@@ -30,6 +32,7 @@ public class JournalEntries : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && tree)
         {
             entryCanvas.SetActive(true);
+           
             
             //print("interact");
             //StartCoroutine("EntryAddedUIAppear");
@@ -37,6 +40,7 @@ public class JournalEntries : MonoBehaviour
         }
 
     }
+
 
     private void OnTriggerStay2D(Collider2D collision) 
     {
