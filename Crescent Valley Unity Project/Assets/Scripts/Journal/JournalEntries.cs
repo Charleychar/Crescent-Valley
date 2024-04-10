@@ -35,8 +35,8 @@ public class JournalEntries : MonoBehaviour
            
             
             //print("interact");
-            //StartCoroutine("EntryAddedUIAppear");
-            //respectiveEntry.enabled = true;
+            StartCoroutine("EntryAddedUIAppear");
+            respectiveEntry.enabled = true;
         }
 
     }
@@ -48,15 +48,20 @@ public class JournalEntries : MonoBehaviour
         tree = true;
       
         //FindObjectOfType<Player>();
-        StartCoroutine("EntryAddedUIAppear");
-        respectiveEntry.enabled = true;
+        //StartCoroutine("EntryAddedUIAppear");
+        //respectiveEntry.enabled = true;
         
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         tree = false;
-        StartCoroutine("EntryAddedUIDisappear");
+
+        if (respectiveEntry.enabled == true)
+        {
+            StartCoroutine("EntryAddedUIDisappear");
+        }
+        
         
     }
 

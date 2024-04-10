@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DialogueInteraction : MonoBehaviour
 {
 
-    [SerializeField] Canvas dialogueBox;
+    /*[SerializeField] Canvas dialogueBox;
 
     bool canInteract = false;
     
@@ -33,5 +33,5 @@ public class DialogueInteraction : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         canInteract = false;
-    }
+    }*/
 }
