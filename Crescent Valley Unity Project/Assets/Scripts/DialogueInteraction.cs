@@ -26,6 +26,7 @@ public class DialogueInteraction : MonoBehaviour
         dialogueText.text = string.Empty;
         //StartDialogue();
     }
+    
     // Update is called once per frame
     void Update()
     {
@@ -40,7 +41,7 @@ public class DialogueInteraction : MonoBehaviour
 
         //DisplayDialogue();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canInteract == true)
         {
             if (dialogueText.text == dialogueLines[index])
             {
