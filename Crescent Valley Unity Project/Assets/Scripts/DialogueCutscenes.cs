@@ -50,7 +50,7 @@ public class DialogueCutscenes : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                dialogueText.text = dialogueLines[index]
+                dialogueText.text = dialogueLines[index];
             }
         }
     }
