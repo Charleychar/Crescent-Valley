@@ -4,46 +4,44 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DialogueInteraction : MonoBehaviour
+public class DialogueCutscenes : MonoBehaviour
 {
-
     [SerializeField] Canvas dialogueCanvas;
     [SerializeField] GameObject dialogueBox;
-    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] Canvas cutsceneCanvas;
     public TextMeshProUGUI dialogueText;
     public string[] dialogueLines;
     public float textSpeed;
 
     private int index;
+    //private BoxCollider2D cutsceneCollider;
 
+    private bool cutsceneTriggered = false;
 
-    bool canInteract = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        //cutsceneCollider = GetComponent<BoxCollider2D>();
+
         dialogueCanvas.enabled = false;
         dialogueBox.SetActive(false);
-        dialogueText.text = string.Empty;
-        //StartDialogue();
+        
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canInteract == true)
+        if (cutsceneCanvas.enabled == true)
         {
-            dialogueCanvas.enabled = true;
-            dialogueBox.SetActive(true);
-
-            StartDialogue();
-            playerMovement.DisableMovement();
-            //DisplayDialogue();
+            cutsceneTriggered = true;
+        }
+        else if (cutsceneCanvas.enabled == false)
+        {
+            cutsceneTriggered = false;
         }
 
-        //DisplayDialogue();
-
-        if (Input.GetKeyDown(KeyCode.Space) && canInteract == true)
+        if (Input.GetKeyDown(KeyCode.Space) && cutsceneCanvas == true)
         {
             if (dialogueText.text == dialogueLines[index])
             {
@@ -52,28 +50,20 @@ public class DialogueInteraction : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                dialogueText.text = dialogueLines[index];
-                playerMovement.EnableMovement();
+                dialogueText.text = dialogueLines[index]
             }
         }
-
     }
 
-    /*private void DisplayDialogue()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (dialogueText.text == dialogueLines[index])
-            {
-                NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogueText.text = dialogueLines[index];
-            }
-        }
-    }*/
+    private void OnTriggerEnter2D(Collider2D collision)
+    {       
+        dialogueCanvas.enabled = true;
+        dialogueBox.SetActive(true);
+
+        StartDialogue();
+
+        //cutsceneCollider.enabled = false;
+    }
 
     private void StartDialogue()
     {
@@ -83,7 +73,7 @@ public class DialogueInteraction : MonoBehaviour
         {
             StartCoroutine("TypingEffect");
         }
-        
+
     }
 
     private IEnumerator TypingEffect()
@@ -108,15 +98,4 @@ public class DialogueInteraction : MonoBehaviour
             dialogueBox.SetActive(false);
         }
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        canInteract = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        canInteract = false;
-    }
-
 }
