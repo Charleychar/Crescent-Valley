@@ -30,7 +30,7 @@ public class bulletinUI : MonoBehaviour
             BulletinUI();
             playerMovement.DisableMovement();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && bulletin.enabled == true)
+        else if (Input.GetKeyDown(KeyCode.E) && bulletin.enabled == true)
         {
             bulletin.enabled = false;
             bulletinDay.enabled = false;

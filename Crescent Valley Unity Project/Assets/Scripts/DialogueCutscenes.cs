@@ -57,6 +57,11 @@ public class DialogueCutscenes : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {       
+        if (this.gameObject.name == "Ben at table")
+        {
+            return;
+        }
+        
         dialogueCanvas.enabled = true;
         dialogueBox.SetActive(true);
 

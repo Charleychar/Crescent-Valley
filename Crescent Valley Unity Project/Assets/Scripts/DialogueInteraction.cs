@@ -10,6 +10,7 @@ public class DialogueInteraction : MonoBehaviour
     [SerializeField] Canvas dialogueCanvas;
     [SerializeField] GameObject dialogueBox;
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] Canvas cutsceneCanvas;
     public TextMeshProUGUI dialogueText;
     public string[] dialogueLines;
     public float textSpeed;
@@ -109,14 +110,28 @@ public class DialogueInteraction : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         canInteract = true;
+
+        if (cutsceneCanvas.enabled == true)
+        {
+            canInteract = true;
+
+            print("can interact true");
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         canInteract = false;
+
+        if (cutsceneCanvas.enabled == false)
+        {
+            canInteract = false;
+
+            
+        }
     }
 
 }
