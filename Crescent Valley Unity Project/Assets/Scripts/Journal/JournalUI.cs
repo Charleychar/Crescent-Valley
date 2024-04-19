@@ -20,12 +20,18 @@ public class JournalUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //close journal
-        if (Input.GetKeyDown(KeyCode.F) && journalUI.enabled == true)
+        //open/close journal
+        if (Input.GetKeyDown(KeyCode.Tab) && journalUI.enabled == false)
+        {
+            journalUI.enabled = true;
+            journalFunction.enabled = true;
+            player.GetComponent<PlayerMovement>().enabled = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab) && journalUI.enabled == true)
         {
             journalUI.enabled = false;
             journalFunction.enabled = false;
             player.GetComponent<PlayerMovement>().enabled = true;
-        }            
+        }
     }   
 }

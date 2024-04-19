@@ -895,7 +895,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 140, y: -582}
+  m_AnchoredPosition: {x: 140, y: -666}
   m_SizeDelta: {x: 915.024, y: 790.044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655357119
@@ -918,27 +918,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WASD         Move
+  m_text: 'WASD        Move
 
 
     ESC            Pause
 
 
-    F                 Open/Close
-    inventory
+    TAB          Open/Close
+    Journal
 
 
-    E                 Interact
+    E                Interact
 
 
-    A/D              Turn journal
-    pages
+    A/D           Turn journal pages
 
 
-    1 - 9            Flute notes'
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a941db7d0e0edd841acf4b3e5ced7c0d, type: 2}
-  m_sharedMaterial: {fileID: -3928428878563146219, guid: a941db7d0e0edd841acf4b3e5ced7c0d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ee29b3141f74f714b9d563974d18f2f6, type: 2}
+  m_sharedMaterial: {fileID: 568485752564825225, guid: ee29b3141f74f714b9d563974d18f2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -998,7 +997,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -323.25424, w: 86.08783}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
