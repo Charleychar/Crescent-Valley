@@ -50,12 +50,14 @@ public class CutsceneManager : MonoBehaviour
     }*/
 
     private IdaNoiseScene idaNoiseScene;
-    
+
     [SerializeField] GameObject CutsceneObject;
     [SerializeField] PlayerMovement PM;
     [SerializeField] Image CurrentCutsceneSlide;
     [SerializeField] Sprite[] CutsceneSlides;
-    [SerializeField] TextMeshProUGUI[] cutsceneDialogue;
+    [SerializeField] string[] cutsceneSlideDialogue;
+    
+    [SerializeField] TextMeshProUGUI cutsceneDialogue;
     [SerializeField] Image overlayComponent;
 
     [SerializeField] BoxCollider2D diningScene1;
@@ -67,6 +69,11 @@ public class CutsceneManager : MonoBehaviour
     private bool CutsceneActive;
     private int CurrentCutsceneNo;
     private int LastQueuedCutsceneNo;
+
+    [SerializeField] float textSpeed;
+
+    [SerializeField] Canvas dialogueCanvas;
+    [SerializeField] GameObject dialogueBox;
 
     private void Start()
     {
@@ -85,6 +92,18 @@ public class CutsceneManager : MonoBehaviour
         PM.DisableMovement();
         journal.SetActive(false);
         inventory.SetActive(false);
+
+        if (cutsceneSlideDialogue[CurrentCutsceneNo] != "")
+        {
+
+            //Display Text
+            cutsceneDialogue.text = string.Empty;
+            dialogueCanvas.enabled = true;
+            dialogueBox.SetActive(true);
+            StartCoroutine("TypingEffect");
+
+            //Display Portrait
+        }
     }
 
     private void Update()
@@ -104,8 +123,20 @@ public class CutsceneManager : MonoBehaviour
 
     private void NextCutsceneSlide()
     {
+        cutsceneDialogue.text = string.Empty;
+        dialogueBox.SetActive(false);
+        dialogueCanvas.enabled = false;
+
         CurrentCutsceneNo++;
         CurrentCutsceneSlide.sprite = CutsceneSlides[CurrentCutsceneNo];
+
+        if (cutsceneSlideDialogue[CurrentCutsceneNo] != "")
+        {
+            cutsceneDialogue.text = string.Empty;
+            dialogueCanvas.enabled = true;
+            dialogueBox.SetActive(true);
+            StartCoroutine("TypingEffect");
+        }
     }
     private void ExitCutscene()
     {
@@ -115,7 +146,14 @@ public class CutsceneManager : MonoBehaviour
         PM.EnableMovement();
         journal.SetActive(true);
         inventory.SetActive(true);
-        
+
+        if (cutsceneSlideDialogue[CurrentCutsceneNo] != "")
+        {
+            cutsceneDialogue.text = string.Empty;
+            dialogueBox.SetActive(false);
+            dialogueCanvas.enabled = false;
+        }
+
     }
 
     private IEnumerator FadeOut()
@@ -140,4 +178,12 @@ public class CutsceneManager : MonoBehaviour
         idaNoiseScene.StartIdaScene();
     }
 
+    private IEnumerator TypingEffect()
+    {
+        foreach (char c in cutsceneSlideDialogue[CurrentCutsceneNo].ToCharArray())
+        {
+            cutsceneDialogue.text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+    }
 }

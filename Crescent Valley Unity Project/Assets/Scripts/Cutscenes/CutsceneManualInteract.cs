@@ -14,11 +14,17 @@ public class CutsceneManualInteract : MonoBehaviour
     private string PlayerTag;
     private bool PlayerNearby;
 
+    CutsceneContainer cutsceneContainer;
+    [SerializeField] int condition;
+    [SerializeField] int effect;
+
+    [SerializeField] bool noCondition = false;
 
     // Start is called before the first frame update
     void Start()
     {
         cutsceneTrigger = GetComponent<CutsceneTrigger>();
+        cutsceneContainer = GetComponentInParent<CutsceneContainer>();
         MyCollider = GetComponent<BoxCollider2D>();
         PlayerTag = "Player";
     }
@@ -32,10 +38,19 @@ public class CutsceneManualInteract : MonoBehaviour
     }
     private void PlayCutscene()
     {
-        if (diningScene1.enabled == true && diningScene2.enabled == true && this.gameObject.name == "Alex woken up")
+        if (cutsceneContainer.cutsceneTriggers[condition] || noCondition) //If my condition is met
+        {
+            MyCollider.enabled = false;
+            cutsceneTrigger.TriggerCutscene();
+            PlayerNearby = false;
+            cutsceneContainer.cutsceneTriggers[effect] = true;
+        }
+
+        /*if (diningScene1.enabled == true && diningScene2.enabled == true && this.gameObject.name == "Alex woken up")
         {
             return;
         }
+
         else
         {
             MyCollider.enabled = false;
@@ -43,16 +58,18 @@ public class CutsceneManualInteract : MonoBehaviour
             PlayerNearby = false;
         } 
         
-        if (alexWokenScene.enabled == true && this.gameObject.name == "Cupboard under the stairs")
-        {
-            return;
-        }
-        else
+        if (alexWokenScene.enabled == false && this.gameObject.name == "Cupboard under the stairs")
         {
             MyCollider.enabled = false;
             cutsceneTrigger.TriggerCutscene();
             PlayerNearby = false;
         }
+        else if (alexWokenScene.enabled == true && this.gameObject.name == "Cupboard under the stairs")
+        {
+            return;
+        }*/
+
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

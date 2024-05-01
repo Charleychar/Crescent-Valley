@@ -10,11 +10,15 @@ public class CollisionCutscene : MonoBehaviour
     private CutsceneTrigger cutsceneTrigger;
     private BoxCollider2D MyCollider;
     private string PlayerTag;
-    
+
+    CutsceneContainer cutsceneContainer;
+    [SerializeField] int effect;
+
     private void Start()
     {
         cutsceneTrigger = GetComponent<CutsceneTrigger>();
         MyCollider = GetComponent<BoxCollider2D>();
+        cutsceneContainer = GetComponentInParent<CutsceneContainer>();
         PlayerTag = "Player";
         flowerEntry.enabled = false;
     }
@@ -39,6 +43,7 @@ public class CollisionCutscene : MonoBehaviour
         {
             MyCollider.enabled = false;
             cutsceneTrigger.TriggerCutscene();
+            cutsceneContainer.cutsceneTriggers[effect] = true;
         }
 
         AddEntry(); 
