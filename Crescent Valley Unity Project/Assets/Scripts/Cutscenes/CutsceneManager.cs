@@ -54,12 +54,8 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] GameObject CutsceneObject;
     [SerializeField] PlayerMovement PM;
     [SerializeField] Image CurrentCutsceneSlide;
-    [SerializeField] GameObject portraitObject;
-    [SerializeField] Image currentPortrait;
-    [SerializeField] Sprite[] CutsceneSlides;
-    [SerializeField] Sprite[] dialoguePortraits;
-    [SerializeField] string[] cutsceneSlideDialogue;
-    
+    [SerializeField] Sprite[] CutsceneSlides;   
+    [SerializeField] string[] cutsceneSlideDialogue;  
     [SerializeField] TextMeshProUGUI cutsceneDialogue;
     [SerializeField] Image overlayComponent;
 
@@ -73,8 +69,7 @@ public class CutsceneManager : MonoBehaviour
     private int CurrentCutsceneNo;
     private int LastQueuedCutsceneNo;
 
-    private int currentPortraitSlide;
-    private int lastQueuedPortraitSlide;
+    //private DialoguePortraits portraitManager;
 
     [SerializeField] float textSpeed;
 
@@ -84,6 +79,8 @@ public class CutsceneManager : MonoBehaviour
     private void Start()
     {
         idaNoiseScene = FindObjectOfType<IdaNoiseScene>();
+        //portraitManager = FindObjectOfType<DialoguePortraits>();
+
     }
 
 
@@ -109,8 +106,7 @@ public class CutsceneManager : MonoBehaviour
             StartCoroutine("TypingEffect");
 
             //Display Portrait
-            portraitObject.SetActive(true);
-            //currentPortraitSlide = 
+            //portraitManager.ShowPortrait(firstPortrait, lastPortrait); 
 
         }
     }

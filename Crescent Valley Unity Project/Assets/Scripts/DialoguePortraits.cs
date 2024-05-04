@@ -7,9 +7,13 @@ public class DialoguePortraits : MonoBehaviour
 {
     [SerializeField] Image currentPortrait;
     [SerializeField] Sprite[] allPortraits;
+    [SerializeField] Image dialogueBox;
+    [SerializeField] Image portrait;
 
-    private int firstPortrait;
-    private int lastPortrait;
+    private bool dialogueActive = false;
+    
+    private int currentPortraitSlide;
+    private int lastQueuedPortraitSlide;
     
     // Start is called before the first frame update
     void Start()
@@ -20,11 +24,46 @@ public class DialoguePortraits : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (dialogueActive == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            if (currentPortraitSlide != lastQueuedPortraitSlide)
+            {
+                NextPortraitSlide();
+            }
+            else
+            {
+                ExitPortraits();
+            }
+        }
+
+        if (dialogueBox.enabled == true)
+        {
+            portrait.enabled = true;
+        }
+        else if (dialogueBox.enabled == false)
+        {
+            portrait.enabled = false;
+        }
     }
 
     public void ShowPortrait(int firstPortrait, int lastPortrait)
     {
-
+        dialogueActive = true;
+        currentPortraitSlide = firstPortrait;
+        currentPortrait.sprite = allPortraits[firstPortrait];
+        lastQueuedPortraitSlide = lastPortrait;
     }
+
+    private void NextPortraitSlide()
+    {
+        currentPortraitSlide++;
+        currentPortrait.sprite = allPortraits[currentPortraitSlide];
+    }
+
+    private void ExitPortraits()
+    {
+        dialogueActive = false;
+    }
+
+   
 }

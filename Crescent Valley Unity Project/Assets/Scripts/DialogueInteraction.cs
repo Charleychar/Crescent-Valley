@@ -6,7 +6,12 @@ using TMPro;
 
 public class DialogueInteraction : MonoBehaviour
 {
+    [SerializeField] int firstPortrait;
+    [SerializeField] int lastPortrait;
 
+    private DialoguePortraits portraitManager;
+    
+    
     [SerializeField] Canvas dialogueCanvas;
     [SerializeField] GameObject dialogueBox;
     [SerializeField] PlayerMovement playerMovement;
@@ -26,6 +31,7 @@ public class DialogueInteraction : MonoBehaviour
         dialogueCanvas.enabled = false;
         dialogueBox.SetActive(false);
         dialogueText.text = string.Empty;
+        portraitManager = FindObjectOfType<DialoguePortraits>();
         //StartDialogue();
     }
     
@@ -58,6 +64,11 @@ public class DialogueInteraction : MonoBehaviour
             }
         }
 
+    }
+
+    public void TriggerPortraits()
+    {
+        portraitManager.ShowPortrait(firstPortrait, lastPortrait);
     }
 
     /*private void DisplayDialogue()
