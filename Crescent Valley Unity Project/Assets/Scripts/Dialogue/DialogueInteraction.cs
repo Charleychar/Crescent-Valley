@@ -64,6 +64,16 @@ public class DialogueInteraction : MonoBehaviour
             }
         }
 
+        //attempt at bug fix
+        if (canInteract == true)
+        {
+            playerMovement.DisableMovement();
+        }
+        else if (canInteract == false)
+        {
+            playerMovement.EnableMovement();
+        }
+
     }
 
     public void TriggerPortraits()
@@ -125,24 +135,24 @@ public class DialogueInteraction : MonoBehaviour
     {
         canInteract = true;
 
-        if (cutsceneCanvas.enabled == true)
+        /*if (cutsceneCanvas.enabled == true)
         {
             canInteract = true;
 
             print("can interact true");
-        }
+        }*/
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         canInteract = false;
 
-        if (cutsceneCanvas.enabled == false)
+        /*if (cutsceneCanvas.enabled == false)
         {
             canInteract = false;
 
             
-        }
+        }*/
     }
 
 }
