@@ -17,6 +17,7 @@ public class CutsceneTrigger : MonoBehaviour
     private void Start()
     {
         cutsceneManager = FindObjectOfType<CutsceneManager>();
+        portraitManager = FindObjectOfType<DialoguePortraits>();
     }
     
     public void TriggerCutscene()

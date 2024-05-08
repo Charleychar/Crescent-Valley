@@ -14,6 +14,7 @@ public class DialogueInteraction : MonoBehaviour
     
     [SerializeField] Canvas dialogueCanvas;
     [SerializeField] GameObject dialogueBox;
+    [SerializeField] GameObject dialoguePortrait;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] Canvas cutsceneCanvas;
     public TextMeshProUGUI dialogueText;
@@ -30,9 +31,11 @@ public class DialogueInteraction : MonoBehaviour
     {
         dialogueCanvas.enabled = false;
         dialogueBox.SetActive(false);
+        dialoguePortrait.SetActive(false);
         dialogueText.text = string.Empty;
         portraitManager = FindObjectOfType<DialoguePortraits>();
         //StartDialogue();
+        
     }
     
     // Update is called once per frame
@@ -78,6 +81,7 @@ public class DialogueInteraction : MonoBehaviour
 
     public void TriggerPortraits()
     {
+        dialoguePortrait.SetActive(true);
         portraitManager.ShowPortrait(firstPortrait, lastPortrait);
     }
 
@@ -105,7 +109,9 @@ public class DialogueInteraction : MonoBehaviour
         {
             StartCoroutine("TypingEffect");
         }
-        
+
+        TriggerPortraits();
+
     }
 
     private IEnumerator TypingEffect()
@@ -127,6 +133,7 @@ public class DialogueInteraction : MonoBehaviour
         }
         else
         {
+            dialoguePortrait.SetActive(false);
             dialogueBox.SetActive(false);
         }
     }

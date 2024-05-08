@@ -10,5 +10,6 @@ public class IntroCutscene : MonoBehaviour
     {
         cutceneTrigger = GetComponent<CutsceneTrigger>();
         cutceneTrigger.TriggerCutscene();
+        cutceneTrigger.TriggerPortraits();
     }
 }

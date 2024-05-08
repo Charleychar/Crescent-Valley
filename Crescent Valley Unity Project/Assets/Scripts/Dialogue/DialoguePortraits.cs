@@ -50,14 +50,16 @@ public class DialoguePortraits : MonoBehaviour
     {
         dialogueActive = true;
         currentPortraitSlide = firstPortrait;
-        currentPortrait.sprite = allPortraits[firstPortrait];
+        print(allPortraits[firstPortrait].name);
+        portrait.sprite = allPortraits[firstPortrait];
         lastQueuedPortraitSlide = lastPortrait;
     }
 
     private void NextPortraitSlide()
     {
         currentPortraitSlide++;
-        currentPortrait.sprite = allPortraits[currentPortraitSlide];
+        portrait.sprite = allPortraits[currentPortraitSlide];
+        print(allPortraits[currentPortraitSlide].name);
     }
 
     private void ExitPortraits()

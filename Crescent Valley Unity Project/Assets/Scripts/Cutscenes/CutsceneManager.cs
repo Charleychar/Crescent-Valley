@@ -58,6 +58,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] string[] cutsceneSlideDialogue;  
     [SerializeField] TextMeshProUGUI cutsceneDialogue;
     [SerializeField] Image overlayComponent;
+    [SerializeField] GameObject dialoguePortrait;
 
     [SerializeField] BoxCollider2D diningScene1;
     [SerializeField] BoxCollider2D diningScene2;
@@ -80,7 +81,7 @@ public class CutsceneManager : MonoBehaviour
     {
         idaNoiseScene = FindObjectOfType<IdaNoiseScene>();
         //portraitManager = FindObjectOfType<DialoguePortraits>();
-
+        dialoguePortrait.SetActive(false);
     }
 
 
@@ -103,6 +104,7 @@ public class CutsceneManager : MonoBehaviour
             cutsceneDialogue.text = string.Empty;
             dialogueCanvas.enabled = true;
             dialogueBox.SetActive(true);
+            dialoguePortrait.SetActive(true);
             StartCoroutine("TypingEffect");
 
             //Display Portrait
@@ -156,6 +158,7 @@ public class CutsceneManager : MonoBehaviour
         {
             cutsceneDialogue.text = string.Empty;
             dialogueBox.SetActive(false);
+            dialoguePortrait.SetActive(false);
             dialogueCanvas.enabled = false;
         }
 

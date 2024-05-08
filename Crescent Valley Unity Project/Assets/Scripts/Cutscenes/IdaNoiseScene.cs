@@ -47,6 +47,7 @@ public class IdaNoiseScene : MonoBehaviour
     public void StartScene()
     {
         cutceneTrigger.TriggerCutscene();
+        cutceneTrigger.TriggerPortraits();
         player.transform.position = newPos;
 
         diningScene1.enabled = false;

@@ -42,6 +42,7 @@ public class CutsceneManualInteract : MonoBehaviour
         {
             MyCollider.enabled = false;
             cutsceneTrigger.TriggerCutscene();
+            cutsceneTrigger.TriggerPortraits();
             PlayerNearby = false;
             cutsceneContainer.cutsceneTriggers[effect] = true;
         }

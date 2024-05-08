@@ -43,6 +43,7 @@ public class CollisionCutscene : MonoBehaviour
         {
             MyCollider.enabled = false;
             cutsceneTrigger.TriggerCutscene();
+            cutsceneTrigger.TriggerPortraits();
             cutsceneContainer.cutsceneTriggers[effect] = true;
         }
 

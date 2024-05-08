@@ -9,6 +9,7 @@ public class DialogueCutscenes : MonoBehaviour
     [SerializeField] Canvas dialogueCanvas;
     [SerializeField] GameObject dialogueBox;
     [SerializeField] Canvas cutsceneCanvas;
+    [SerializeField] GameObject dialoguePortrait;
     public TextMeshProUGUI dialogueText;
     public string[] dialogueLines;
     public float textSpeed;
@@ -23,10 +24,11 @@ public class DialogueCutscenes : MonoBehaviour
     void Start()
     {
         //cutsceneCollider = GetComponent<BoxCollider2D>();
-
+        
         dialogueCanvas.enabled = false;
         dialogueBox.SetActive(false);
-        
+        dialoguePortrait.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class DialogueCutscenes : MonoBehaviour
             else
             {
                 StopAllCoroutines();
+                dialoguePortrait.SetActive(false);
                 dialogueText.text = dialogueLines[index];
             }
         }
@@ -74,6 +77,7 @@ public class DialogueCutscenes : MonoBehaviour
     {
         index = 0;
         dialogueText.text = string.Empty;
+        dialoguePortrait.SetActive(true);
         if (dialogueCanvas.enabled == true && dialogueBox.activeInHierarchy == true)
         {
             StartCoroutine("TypingEffect");
@@ -83,6 +87,7 @@ public class DialogueCutscenes : MonoBehaviour
 
     private IEnumerator TypingEffect()
     {
+        
         foreach (char c in dialogueLines[index].ToCharArray())
         {
             dialogueText.text += c;
@@ -92,6 +97,7 @@ public class DialogueCutscenes : MonoBehaviour
 
     private void NextLine()
     {
+        print("hi");
         if (index < dialogueLines.Length - 1)
         {
             index++;
