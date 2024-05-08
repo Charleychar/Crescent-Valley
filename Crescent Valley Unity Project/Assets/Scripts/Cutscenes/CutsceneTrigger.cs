@@ -14,10 +14,13 @@ public class CutsceneTrigger : MonoBehaviour
     [SerializeField] int firstPortrait;
     [SerializeField] int lastPortrait;
 
+    private GameObject portraitObject;
+
     private void Start()
     {
         cutsceneManager = FindObjectOfType<CutsceneManager>();
         portraitManager = FindObjectOfType<DialoguePortraits>();
+        portraitObject = GameObject.Find("Portrait");
     }
     
     public void TriggerCutscene()
@@ -28,5 +31,6 @@ public class CutsceneTrigger : MonoBehaviour
     public void TriggerPortraits()
     {
         portraitManager.ShowPortrait(firstPortrait, lastPortrait);
+        //portraitObject.SetActive(true);
     }
 }

@@ -10,9 +10,9 @@ public class DialogueCutscenes : MonoBehaviour
     [SerializeField] GameObject dialogueBox;
     [SerializeField] Canvas cutsceneCanvas;
     [SerializeField] GameObject dialoguePortrait;
-    public TextMeshProUGUI dialogueText;
-    public string[] dialogueLines;
-    public float textSpeed;
+    //public TextMeshProUGUI dialogueText;
+    //public string[] dialogueLines;
+    //public float textSpeed;
 
     private int index;
     //private BoxCollider2D cutsceneCollider;
@@ -43,7 +43,7 @@ public class DialogueCutscenes : MonoBehaviour
             cutsceneTriggered = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && cutsceneCanvas == true)
+        /*if (Input.GetKeyDown(KeyCode.Space) && cutsceneCanvas == true)
         {
             if (dialogueText.text == dialogueLines[index])
             {
@@ -55,7 +55,7 @@ public class DialogueCutscenes : MonoBehaviour
                 dialoguePortrait.SetActive(false);
                 dialogueText.text = dialogueLines[index];
             }
-        }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,28 +76,28 @@ public class DialogueCutscenes : MonoBehaviour
     private void StartDialogue()
     {
         index = 0;
-        dialogueText.text = string.Empty;
+        //dialogueText.text = string.Empty;
         dialoguePortrait.SetActive(true);
         if (dialogueCanvas.enabled == true && dialogueBox.activeInHierarchy == true)
         {
-            StartCoroutine("TypingEffect");
+            //StartCoroutine("TypingEffect");
         }
 
     }
 
-    private IEnumerator TypingEffect()
-    {
+    //private IEnumerator TypingEffect()
+    //{
         
-        foreach (char c in dialogueLines[index].ToCharArray())
-        {
-            dialogueText.text += c;
-            yield return new WaitForSeconds(textSpeed);
-        }
-    }
+    //    foreach (char c in dialogueLines[index].ToCharArray())
+    //    {
+    //        dialogueText.text += c;
+    //        yield return new WaitForSeconds(textSpeed);
+    //    }
+    //}
 
     private void NextLine()
     {
-        print("hi");
+        /*print("hi");
         if (index < dialogueLines.Length - 1)
         {
             index++;
@@ -107,6 +107,6 @@ public class DialogueCutscenes : MonoBehaviour
         else
         {
             dialogueBox.SetActive(false);
-        }
+        }*/
     }
 }

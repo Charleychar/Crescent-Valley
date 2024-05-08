@@ -31,7 +31,7 @@ public class DialogueInteraction : MonoBehaviour
     {
         dialogueCanvas.enabled = false;
         dialogueBox.SetActive(false);
-        dialoguePortrait.SetActive(false);
+        //dialoguePortrait.SetActive(false);
         dialogueText.text = string.Empty;
         portraitManager = FindObjectOfType<DialoguePortraits>();
         //StartDialogue();

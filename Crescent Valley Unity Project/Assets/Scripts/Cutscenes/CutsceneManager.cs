@@ -66,6 +66,8 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] GameObject inventory;
     [SerializeField] GameObject journal;
 
+    private CutsceneTrigger cutsceneTrigger;
+
     private bool CutsceneActive;
     private int CurrentCutsceneNo;
     private int LastQueuedCutsceneNo;
@@ -81,7 +83,8 @@ public class CutsceneManager : MonoBehaviour
     {
         idaNoiseScene = FindObjectOfType<IdaNoiseScene>();
         //portraitManager = FindObjectOfType<DialoguePortraits>();
-        dialoguePortrait.SetActive(false);
+        //dialoguePortrait.SetActive(false);
+        cutsceneTrigger = FindObjectOfType<CutsceneTrigger>();
     }
 
 
@@ -96,6 +99,7 @@ public class CutsceneManager : MonoBehaviour
         PM.DisableMovement();
         journal.SetActive(false);
         inventory.SetActive(false);
+        dialoguePortrait.SetActive(true);
 
         if (cutsceneSlideDialogue[CurrentCutsceneNo] != "")
         {
@@ -104,11 +108,11 @@ public class CutsceneManager : MonoBehaviour
             cutsceneDialogue.text = string.Empty;
             dialogueCanvas.enabled = true;
             dialogueBox.SetActive(true);
-            dialoguePortrait.SetActive(true);
             StartCoroutine("TypingEffect");
 
             //Display Portrait
-            //portraitManager.ShowPortrait(firstPortrait, lastPortrait); 
+            cutsceneTrigger.TriggerPortraits();
+            //dialoguePortrait.SetActive(true);
 
         }
     }
@@ -153,12 +157,13 @@ public class CutsceneManager : MonoBehaviour
         PM.EnableMovement();
         journal.SetActive(true);
         inventory.SetActive(true);
+        //dialoguePortrait.SetActive(false);
 
         if (cutsceneSlideDialogue[CurrentCutsceneNo] != "")
         {
             cutsceneDialogue.text = string.Empty;
             dialogueBox.SetActive(false);
-            dialoguePortrait.SetActive(false);
+            //dialoguePortrait.SetActive(false);
             dialogueCanvas.enabled = false;
         }
 
