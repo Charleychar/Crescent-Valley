@@ -66,7 +66,7 @@ public class DialogueCutscenes : MonoBehaviour
         }
         
         dialogueCanvas.enabled = true;
-        dialogueBox.SetActive(true);
+        //dialogueBox.SetActive(true);
 
         StartDialogue();
 

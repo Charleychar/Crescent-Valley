@@ -26,6 +26,7 @@ public class CutsceneTrigger : MonoBehaviour
     public void TriggerCutscene()
     {
         cutsceneManager.ActivateCutscene(FirstSlide, LastSlide);
+        
     }
 
     public void TriggerPortraits()

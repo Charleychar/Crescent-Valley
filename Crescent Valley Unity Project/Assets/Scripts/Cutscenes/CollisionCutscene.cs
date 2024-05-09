@@ -7,9 +7,12 @@ public class CollisionCutscene : MonoBehaviour
 {
     [SerializeField] BoxCollider2D idaFlowerCollider;
     [SerializeField] Image flowerEntry;
+    [SerializeField] GameObject dialogueBox;
     private CutsceneTrigger cutsceneTrigger;
     private BoxCollider2D MyCollider;
     private string PlayerTag;
+
+    
 
     CutsceneContainer cutsceneContainer;
     [SerializeField] int effect;
@@ -21,6 +24,7 @@ public class CollisionCutscene : MonoBehaviour
         cutsceneContainer = GetComponentInParent<CutsceneContainer>();
         PlayerTag = "Player";
         flowerEntry.enabled = false;
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -41,6 +45,7 @@ public class CollisionCutscene : MonoBehaviour
         }
         else
         {
+            dialogueBox.SetActive(false);
             MyCollider.enabled = false;
             cutsceneTrigger.TriggerCutscene();
             cutsceneTrigger.TriggerPortraits();

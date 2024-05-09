@@ -100,6 +100,7 @@ public class CutsceneManager : MonoBehaviour
         journal.SetActive(false);
         inventory.SetActive(false);
         dialoguePortrait.SetActive(true);
+        dialogueBox.SetActive(false);
 
         if (cutsceneSlideDialogue[CurrentCutsceneNo] != "")
         {
@@ -107,7 +108,7 @@ public class CutsceneManager : MonoBehaviour
             //Display Text
             cutsceneDialogue.text = string.Empty;
             dialogueCanvas.enabled = true;
-            dialogueBox.SetActive(true);
+            //dialogueBox.SetActive(true);
             StartCoroutine("TypingEffect");
 
             //Display Portrait
