@@ -5,6 +5,7 @@ using UnityEngine.Video;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class CutsceneManager : MonoBehaviour
 {
     /*

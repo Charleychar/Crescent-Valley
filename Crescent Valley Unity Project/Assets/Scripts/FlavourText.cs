@@ -77,7 +77,7 @@ public class FlavourText : MonoBehaviour
         }
     }
 
-    private void StartDialogue()
+    public void StartDialogue()
     {
         index = 0;
         text.text = string.Empty;

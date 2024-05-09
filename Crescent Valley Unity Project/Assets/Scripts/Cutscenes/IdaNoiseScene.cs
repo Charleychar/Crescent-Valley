@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IdaNoiseScene : MonoBehaviour
 {
@@ -46,11 +47,13 @@ public class IdaNoiseScene : MonoBehaviour
 
     public void StartScene()
     {
-        cutceneTrigger.TriggerCutscene();
-        cutceneTrigger.TriggerPortraits();
-        player.transform.position = newPos;
+        SceneManager.LoadScene(2);
 
-        diningScene1.enabled = false;
-        diningScene2.enabled = false;
+        //cutceneTrigger.TriggerCutscene();
+        //cutceneTrigger.TriggerPortraits();
+        //player.transform.position = newPos;
+
+        //diningScene1.enabled = false;
+        //diningScene2.enabled = false;
     }
 }

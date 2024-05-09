@@ -7,7 +7,7 @@ public class CollisionCutscene : MonoBehaviour
 {
     [SerializeField] BoxCollider2D idaFlowerCollider;
     [SerializeField] Image flowerEntry;
-    [SerializeField] GameObject dialogueBox;
+    //[SerializeField] GameObject dialogueBox;
     private CutsceneTrigger cutsceneTrigger;
     private BoxCollider2D MyCollider;
     private string PlayerTag;
@@ -45,7 +45,7 @@ public class CollisionCutscene : MonoBehaviour
         }
         else
         {
-            dialogueBox.SetActive(false);
+            //dialogueBox.SetActive(false);
             MyCollider.enabled = false;
             cutsceneTrigger.TriggerCutscene();
             cutsceneTrigger.TriggerPortraits();

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class IntroCutscene : MonoBehaviour
 {
-    private CutsceneTrigger cutceneTrigger;
+    private CutsceneTrigger cutsceneTrigger;
     
     void Start()
     {
-        cutceneTrigger = GetComponent<CutsceneTrigger>();
-        cutceneTrigger.TriggerCutscene();
-        cutceneTrigger.TriggerPortraits();
+        cutsceneTrigger = GetComponent<CutsceneTrigger>();
+        cutsceneTrigger.TriggerCutscene();
+        cutsceneTrigger.TriggerPortraits();
     }
 }
