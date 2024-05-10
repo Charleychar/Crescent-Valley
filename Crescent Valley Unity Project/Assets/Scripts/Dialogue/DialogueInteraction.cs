@@ -48,6 +48,7 @@ public class DialogueInteraction : MonoBehaviour
 
             StartDialogue();
             playerMovement.DisableMovement();
+            //playerMovement.enabled = false;
             //DisplayDialogue();
         }
 
@@ -63,6 +64,7 @@ public class DialogueInteraction : MonoBehaviour
             {
                 StopAllCoroutines();
                 dialogueText.text = dialogueLines[index];
+                playerMovement.enabled = true;
                 playerMovement.EnableMovement();
             }
         }

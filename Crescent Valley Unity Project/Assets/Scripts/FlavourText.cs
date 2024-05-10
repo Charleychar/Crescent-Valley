@@ -36,7 +36,8 @@ public class FlavourText : MonoBehaviour
             textBox.SetActive(true);
 
             StartDialogue();
-            playerMovement.DisableMovement();          
+            playerMovement.DisableMovement();
+            //playerMovement.enabled = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && canInteract == true)
@@ -49,6 +50,7 @@ public class FlavourText : MonoBehaviour
             {
                 StopAllCoroutines();
                 text.text = textLines[index];
+                playerMovement.enabled = true;
                 playerMovement.EnableMovement();
             }
         }
