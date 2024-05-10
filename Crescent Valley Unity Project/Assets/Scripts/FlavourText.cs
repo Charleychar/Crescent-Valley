@@ -13,6 +13,10 @@ public class FlavourText : MonoBehaviour
     public string[] textLines;
     public float textSpeed;
 
+    public AudioSource audioSource;
+    public AudioClip clip;
+    public float volume = 0.5f;
+
     private int index;
 
     bool canInteract = false;
@@ -32,6 +36,10 @@ public class FlavourText : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && canInteract == true)
         {
+            if (gameObject.CompareTag("locked door"))
+            {
+                audioSource.PlayOneShot(clip, volume);
+            } 
             textCanvas.enabled = true;
             textBox.SetActive(true);
 

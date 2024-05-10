@@ -6,6 +6,9 @@ public class MoveBetweenRooms : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] Vector2 newPos;
+    public AudioSource audioSource;
+    public AudioClip clip;
+    public float volume = 0.5f;
     
 
     private bool closeToDoor = false;
@@ -28,6 +31,7 @@ public class MoveBetweenRooms : MonoBehaviour
     public void MovePlayer()
     {
         player.transform.position = newPos;
+        audioSource.PlayOneShot(clip, volume);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
