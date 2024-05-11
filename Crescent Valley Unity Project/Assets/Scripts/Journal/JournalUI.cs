@@ -6,6 +6,11 @@ public class JournalUI : MonoBehaviour
 {
     [SerializeField] Canvas journalUI;
     [SerializeField] Journal journalFunction;
+    
+    public AudioSource audioSource;
+    public AudioClip gettingJournalOut;
+    public AudioClip puttingJournalAway;
+    public float volume = 0.5f;
 
     GameObject player;
 
@@ -26,12 +31,14 @@ public class JournalUI : MonoBehaviour
             journalUI.enabled = true;
             journalFunction.enabled = true;
             player.GetComponent<PlayerMovement>().enabled = false;
+            audioSource.PlayOneShot(gettingJournalOut, volume);
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && journalUI.enabled == true)
         {
             journalUI.enabled = false;
             journalFunction.enabled = false;
             player.GetComponent<PlayerMovement>().enabled = true;
+            audioSource.PlayOneShot(puttingJournalAway, volume);
         }
     }   
 }

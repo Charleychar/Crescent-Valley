@@ -11,6 +11,10 @@ public class JournalEntries : MonoBehaviour
     [SerializeField] Image entryAdded;
     [SerializeField] Image respectiveEntry;
     bool tree = false;
+
+    public AudioSource audioSource;
+    public AudioClip writingSound;
+    public float volume = 0.5f;
     
 
 
@@ -32,7 +36,7 @@ public class JournalEntries : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && tree)
         {
             entryCanvas.SetActive(true);
-           
+            audioSource.PlayOneShot(writingSound, volume);
             
             //print("interact");
             StartCoroutine("EntryAddedUIAppear");

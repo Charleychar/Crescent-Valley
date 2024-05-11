@@ -13,6 +13,8 @@ public class FlavourText : MonoBehaviour
     public string[] textLines;
     public float textSpeed;
 
+    private TypingSounds typingSounds;
+
     public AudioSource audioSource;
     public AudioClip clip;
     public float volume = 0.5f;
@@ -29,6 +31,7 @@ public class FlavourText : MonoBehaviour
         textCanvas.enabled = false;
         textBox.SetActive(false);
         text.text = string.Empty;
+        typingSounds = FindObjectOfType<TypingSounds>();
     }
 
     // Update is called once per frame
@@ -69,6 +72,7 @@ public class FlavourText : MonoBehaviour
         foreach (char c in textLines[index].ToCharArray())
         {
             text.text += c;
+            typingSounds.PlayTypingSFX();
             yield return new WaitForSeconds(textSpeed);
         }
     }

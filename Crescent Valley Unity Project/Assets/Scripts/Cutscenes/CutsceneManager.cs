@@ -68,6 +68,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] GameObject journal;
 
     private CutsceneTrigger cutsceneTrigger;
+    private TypingSounds typingSounds;
 
     private bool CutsceneActive;
     private int CurrentCutsceneNo;
@@ -86,6 +87,7 @@ public class CutsceneManager : MonoBehaviour
         //portraitManager = FindObjectOfType<DialoguePortraits>();
         //dialoguePortrait.SetActive(false);
         cutsceneTrigger = FindObjectOfType<CutsceneTrigger>();
+        typingSounds = FindObjectOfType<TypingSounds>();
     }
 
 
@@ -198,6 +200,7 @@ public class CutsceneManager : MonoBehaviour
         foreach (char c in cutsceneSlideDialogue[CurrentCutsceneNo].ToCharArray())
         {
             cutsceneDialogue.text += c;
+            typingSounds.PlayTypingSFX();
             yield return new WaitForSeconds(textSpeed);
         }
     }

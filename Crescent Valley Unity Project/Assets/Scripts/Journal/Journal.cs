@@ -6,6 +6,11 @@ public class Journal : MonoBehaviour
 {
     [SerializeField] int currentPage = 0;
 
+    public AudioSource audioSource;
+    public AudioClip closingJournal;
+    public AudioClip turningPage;
+    public float volume = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +36,12 @@ public class Journal : MonoBehaviour
             if (currentPage >= 5)
             {
                 currentPage = 0;
+                audioSource.PlayOneShot(closingJournal, volume);
             }
             else
             {
                 currentPage++;
+                audioSource.PlayOneShot(turningPage, volume);
             }
         }
 
@@ -43,10 +50,12 @@ public class Journal : MonoBehaviour
             if (currentPage <= 0)
             {
                 currentPage = 5;
+                audioSource.PlayOneShot(turningPage, volume);
             }
             else
             {
                 currentPage--;
+                audioSource.PlayOneShot(turningPage, volume);
             }
         }
     }

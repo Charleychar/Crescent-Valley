@@ -10,6 +10,7 @@ public class DialogueInteraction : MonoBehaviour
     [SerializeField] int lastPortrait;
 
     private DialoguePortraits portraitManager;
+    private TypingSounds typingSounds;
     
     
     [SerializeField] Canvas dialogueCanvas;
@@ -34,6 +35,7 @@ public class DialogueInteraction : MonoBehaviour
         //dialoguePortrait.SetActive(false);
         dialogueText.text = string.Empty;
         portraitManager = FindObjectOfType<DialoguePortraits>();
+        typingSounds = FindObjectOfType<TypingSounds>();
         //StartDialogue();
         
     }
@@ -121,6 +123,7 @@ public class DialogueInteraction : MonoBehaviour
         foreach (char c in dialogueLines[index].ToCharArray())
         {
             dialogueText.text += c;
+            typingSounds.PlayTypingSFX();
             yield return new WaitForSeconds(textSpeed);
         }
     }
