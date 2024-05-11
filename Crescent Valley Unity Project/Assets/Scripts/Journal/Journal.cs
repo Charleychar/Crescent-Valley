@@ -55,7 +55,7 @@ public class Journal : MonoBehaviour
             else
             {
                 currentPage--;
-                audioSource.PlayOneShot(turningPage, volume);
+                audioSource.PlayOneShot(closingJournal, volume);
             }
         }
     }
