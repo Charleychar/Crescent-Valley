@@ -36,6 +36,7 @@ public class JournalEntries : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && tree)
         {
             entryCanvas.SetActive(true);
+            entryAdded.enabled = true;
             audioSource.PlayOneShot(writingSound, volume);
             
             //print("interact");
@@ -61,22 +62,25 @@ public class JournalEntries : MonoBehaviour
     {
         tree = false;
 
-        if (respectiveEntry.enabled == true)
-        {
-            StartCoroutine("EntryAddedUIDisappear");
-        }
+        //if (respectiveEntry.enabled == true)
+        //{
+        //    StartCoroutine("EntryAddedUIDisappear");
+        //}
         
         
     }
 
     private IEnumerator EntryAddedUIAppear()
     {
-        //entryAddedCanvas.enabled = true;
+        
+        print("lmao");
         
         for (float _alpha = entryAdded.color.a; _alpha <= 1; _alpha += Time.deltaTime)
         {
             entryAdded.color = new Color(entryAdded.color.r, entryAdded.color.g, entryAdded.color.b, _alpha);
-            yield return null;   
+
+            yield return new WaitForSeconds(1);
+            StartCoroutine("EntryAddedUIDisappear");
         }
     }
 
@@ -89,6 +93,7 @@ public class JournalEntries : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+        entryAdded.enabled = false;
     }
 
 }

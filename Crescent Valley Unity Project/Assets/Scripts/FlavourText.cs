@@ -47,7 +47,9 @@ public class FlavourText : MonoBehaviour
             textBox.SetActive(true);
 
             StartDialogue();
+            
             playerMovement.DisableMovement();
+            playerMovement.enabled = false;
             //playerMovement.enabled = false;
         }
 

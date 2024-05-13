@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void EnableMovement()
     {
+        print("silksong isn't coming");
         playerRigid.WakeUp();
     }
     public void DisableMovement()
