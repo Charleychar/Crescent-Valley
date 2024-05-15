@@ -50,7 +50,7 @@ public class DialogueInteraction : MonoBehaviour
 
             StartDialogue();
             playerMovement.DisableMovement();
-            //playerMovement.enabled = false;
+            playerMovement.enabled = false;
             //DisplayDialogue();
         }
 
@@ -66,11 +66,12 @@ public class DialogueInteraction : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                dialogueText.text = dialogueLines[index];
-                playerMovement.enabled = true;
+                dialogueText.text = dialogueLines[index];                
                 dialoguePortrait.SetActive(false);
                 dialogueBox.SetActive(false);
-                playerMovement.EnableMovement(gameObject.name);
+                
+                
+
             }
         }
 
@@ -145,6 +146,9 @@ public class DialogueInteraction : MonoBehaviour
         {
             dialoguePortrait.SetActive(false);
             dialogueBox.SetActive(false);
+            playerMovement.enabled = true;
+            playerMovement.EnableMovement(gameObject.name);
+            print("YIPEEEEE");
         }
     }
 

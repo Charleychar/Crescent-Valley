@@ -33,10 +33,11 @@ public class JournalEntries : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && tree)
+        if (Input.GetKeyDown(KeyCode.E) && tree == true)
         {
             entryCanvas.SetActive(true);
             entryAdded.enabled = true;
+            print("enabled");
             audioSource.PlayOneShot(writingSound, volume);
             
             //print("interact");
@@ -79,7 +80,8 @@ public class JournalEntries : MonoBehaviour
         {
             entryAdded.color = new Color(entryAdded.color.r, entryAdded.color.g, entryAdded.color.b, _alpha);
 
-            yield return new WaitForSeconds(1);
+            yield return null;
+            
             StartCoroutine("EntryAddedUIDisappear");
         }
     }
@@ -93,7 +95,7 @@ public class JournalEntries : MonoBehaviour
         }
 
         gameObject.SetActive(false);
-        entryAdded.enabled = false;
+        //entryAdded.enabled = false;
     }
 
 }

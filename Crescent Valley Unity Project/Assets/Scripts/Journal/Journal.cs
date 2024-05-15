@@ -8,7 +8,8 @@ public class Journal : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip closingJournal;
-    public AudioClip turningPage;
+    public AudioClip[] turningPage;
+    private AudioClip sound;
     public float volume = 0.5f;
 
     // Start is called before the first frame update
@@ -41,7 +42,7 @@ public class Journal : MonoBehaviour
             else
             {
                 currentPage++;
-                audioSource.PlayOneShot(turningPage, volume);
+                PageSound();
             }
         }
 
@@ -50,12 +51,18 @@ public class Journal : MonoBehaviour
             if (currentPage <= 0)
             {
                 currentPage = 5;
-                audioSource.PlayOneShot(turningPage, volume);
+                PageSound();
+            }
+            else if (currentPage <= 1)
+            {
+                currentPage = 0;
+                audioSource.PlayOneShot(closingJournal, volume);
+
             }
             else
             {
                 currentPage--;
-                audioSource.PlayOneShot(closingJournal, volume);
+                PageSound();
             }
         }
     }
@@ -76,5 +83,14 @@ public class Journal : MonoBehaviour
             }
             pageIndex++;
         }
+    }
+
+    private void PageSound()
+    {
+        int index = Random.Range(0, turningPage.Length);
+        sound = turningPage[index];
+
+        audioSource.clip = sound;
+        audioSource.PlayOneShot(sound, volume);
     }
 }
