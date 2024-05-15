@@ -32,7 +32,7 @@ public class PauseMenu : MonoBehaviour
         {
             pause.enabled = false;
             player.GetComponent<PlayerMovement>().enabled = true;
-            player.GetComponent<PlayerMovement>().EnableMovement();
+            player.GetComponent<PlayerMovement>().EnableMovement(gameObject.name);
         }        
     }
 

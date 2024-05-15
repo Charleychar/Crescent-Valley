@@ -27,7 +27,7 @@ public class WallUI : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.E) && wallUI.enabled == true)
         {
             wallUI.enabled = false;
-            playerMovement.EnableMovement();
+            playerMovement.EnableMovement(gameObject.name);
         }
     }
 

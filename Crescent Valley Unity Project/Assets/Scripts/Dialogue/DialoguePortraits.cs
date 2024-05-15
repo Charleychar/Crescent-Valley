@@ -50,7 +50,6 @@ public class DialoguePortraits : MonoBehaviour
     {
         dialogueActive = true;
         currentPortraitSlide = firstPortrait;
-        print(allPortraits[firstPortrait].name);
         portrait.sprite = allPortraits[firstPortrait];
         lastQueuedPortraitSlide = lastPortrait;
     }

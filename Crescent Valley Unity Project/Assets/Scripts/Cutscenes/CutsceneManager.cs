@@ -138,6 +138,7 @@ public class CutsceneManager : MonoBehaviour
 
     private void NextCutsceneSlide()
     {
+        StopAllCoroutines();
         cutsceneDialogue.text = string.Empty;
         dialogueBox.SetActive(false);
         dialogueCanvas.enabled = false;
@@ -158,7 +159,7 @@ public class CutsceneManager : MonoBehaviour
         StartCoroutine("FadeOut");  
         CutsceneActive = false;  
         CutsceneObject.SetActive(false);
-        PM.EnableMovement();
+        PM.EnableMovement(gameObject.name);
         journal.SetActive(true);
         inventory.SetActive(true);
         //dialoguePortrait.SetActive(false);

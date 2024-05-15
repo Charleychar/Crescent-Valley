@@ -20,26 +20,26 @@ public class InventoryMenu : MonoBehaviour
     }
 
     //opening and closing menu
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && inventory.enabled == false)
-        {
-            inventory.enabled = true;
-            player.GetComponent<PlayerMovement>().DisableMovement();
-            player.GetComponent<PlayerMovement>().enabled = false;
-        } 
-        else if (Input.GetKeyDown(KeyCode.F) && inventory.enabled == true)
-        {
-            inventory.enabled = false;
-            player.GetComponent<PlayerMovement>().enabled = true;
-            player.GetComponent<PlayerMovement>().EnableMovement();
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.F) && inventory.enabled == false)
+    //    {
+    //        inventory.enabled = true;
+    //        player.GetComponent<PlayerMovement>().DisableMovement();
+    //        player.GetComponent<PlayerMovement>().enabled = false;
+    //    } 
+    //    else if (Input.GetKeyDown(KeyCode.F) && inventory.enabled == true)
+    //    {
+    //        inventory.enabled = false;
+    //        player.GetComponent<PlayerMovement>().enabled = true;
+    //        player.GetComponent<PlayerMovement>().EnableMovement();
+    //    }
+    //}
     
-    public void OpenJournal()
-    {
-        journalUI.enabled = true;
-        journalFunction.enabled = true;
-        inventory.enabled = false;
-    }
+    //public void OpenJournal()
+    //{
+    //    journalUI.enabled = true;
+    //    journalFunction.enabled = true;
+    //    inventory.enabled = false;
+    //}
 }

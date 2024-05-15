@@ -58,7 +58,8 @@ public class DialogueInteraction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canInteract == true)
         {
-            if (dialogueText.text == dialogueLines[index])
+            print(index + 1);
+            if (dialogueLines.Length >= index + 1)
             {
                 NextLine();
             }
@@ -67,19 +68,21 @@ public class DialogueInteraction : MonoBehaviour
                 StopAllCoroutines();
                 dialogueText.text = dialogueLines[index];
                 playerMovement.enabled = true;
-                playerMovement.EnableMovement();
+                dialoguePortrait.SetActive(false);
+                dialogueBox.SetActive(false);
+                playerMovement.EnableMovement(gameObject.name);
             }
         }
 
         //attempt at bug fix
-        if (canInteract == true)
+        /*if (canInteract == true)
         {
             playerMovement.DisableMovement();
         }
         else if (canInteract == false)
         {
-            playerMovement.EnableMovement();
-        }
+            playerMovement.EnableMovement(gameObject.name);
+        }*/
 
     }
 
@@ -130,6 +133,8 @@ public class DialogueInteraction : MonoBehaviour
 
     private void NextLine()
     {
+        StopAllCoroutines();
+        dialogueText.text = dialogueLines[index];
         if (index < dialogueLines.Length - 1)
         {
             index++;

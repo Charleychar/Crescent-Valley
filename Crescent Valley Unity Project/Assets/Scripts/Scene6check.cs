@@ -31,7 +31,7 @@ public class Scene6check : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && alexWokenScene.enabled == true && SceneManager.GetSceneByName("Chapter 2").isLoaded)
         {
             playerMovement.enabled = true;
-            playerMovement.EnableMovement();
+            playerMovement.EnableMovement(gameObject.name);
         }
 
         if (alexWokenScene.enabled == true)

@@ -26,7 +26,7 @@ public class CutsceneAutomatic : MonoBehaviour
             cutscenePlayer.Stop();
             cutscenePlayer.clip = null;
             player.GetComponent<PlayerMovement>().enabled = true;
-            PM.EnableMovement();
+            PM.EnableMovement(gameObject.name);
         }
     }
 

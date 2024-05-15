@@ -23,7 +23,7 @@ public class UpstairsStop : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && inRange == true)
         {
             playerMovement.enabled = true;
-            playerMovement.EnableMovement();
+            playerMovement.EnableMovement(gameObject.name);
         }
     }
 

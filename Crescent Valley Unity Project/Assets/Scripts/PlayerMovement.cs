@@ -25,9 +25,8 @@ public class PlayerMovement : MonoBehaviour
         playerRigid.velocity = moveInput * walkSpeed;
     }
 
-    public void EnableMovement()
+    public void EnableMovement(string name)
     {
-        print("silksong isn't coming");
         playerRigid.WakeUp();
     }
     public void DisableMovement()

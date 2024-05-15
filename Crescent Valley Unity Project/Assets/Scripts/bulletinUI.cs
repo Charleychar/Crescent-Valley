@@ -36,7 +36,7 @@ public class bulletinUI : MonoBehaviour
             bulletinDay.enabled = false;
             bulletinNight.enabled = false;
 
-            playerMovement.EnableMovement();
+            playerMovement.EnableMovement(gameObject.name);
         }
     }
 

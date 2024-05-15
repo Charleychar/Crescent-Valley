@@ -20,28 +20,28 @@ public class Cutscenes : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (cutscenePlayer.isPaused)
-        {
-            cutscenePlayer.Stop();
-            cutscenePlayer.clip = null;
-            player.GetComponent<PlayerMovement>().enabled = true;
-            PM.EnableMovement();
+    //void Update()
+    //{
+    //    if (cutscenePlayer.isPaused)
+    //    {
+    //        cutscenePlayer.Stop();
+    //        cutscenePlayer.clip = null;
+    //        player.GetComponent<PlayerMovement>().enabled = true;
+    //        PM.EnableMovement();
 
-            //if (cutsceneManager.HasCutscenePlayed())
-            //{
-            //    journalIntro.StartJournalTutorial();
-            //}
-        }    
-    }
+    //        //if (cutsceneManager.HasCutscenePlayed())
+    //        //{
+    //        //    journalIntro.StartJournalTutorial();
+    //        //}
+    //    }    
+    //}
 
-    public void PlayCutscene(VideoClip newClip)
-    {
-        cutscenePlayer.clip = newClip;
-        cutscenePlayer.Play();
-        PM.DisableMovement();
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        player.GetComponent<PlayerMovement>().enabled = false;
-    }
+    //public void PlayCutscene(VideoClip newClip)
+    //{
+    //    cutscenePlayer.clip = newClip;
+    //    cutscenePlayer.Play();
+    //    PM.DisableMovement();
+    //    player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    //    player.GetComponent<PlayerMovement>().enabled = false;
+    //}
 }

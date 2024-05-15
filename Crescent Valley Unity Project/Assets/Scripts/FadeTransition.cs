@@ -36,7 +36,7 @@ public class FadeTransition : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {      
         player.GetComponent<PlayerMovement>().enabled = true;
-        PM.EnableMovement();
+        PM.EnableMovement(gameObject.name);
         StartCoroutine("FadeIn");
     }
     private IEnumerator FadeIn()

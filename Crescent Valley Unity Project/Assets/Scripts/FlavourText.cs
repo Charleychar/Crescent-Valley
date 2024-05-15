@@ -55,7 +55,7 @@ public class FlavourText : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canInteract == true)
         {
-            if (text.text == textLines[index])
+            if (textLines.Length == index)
             {
                 NextLine();
             }
@@ -63,8 +63,10 @@ public class FlavourText : MonoBehaviour
             {
                 StopAllCoroutines();
                 text.text = textLines[index];
+                textBox.SetActive(false);
                 playerMovement.enabled = true;
-                playerMovement.EnableMovement();
+                playerMovement.EnableMovement(gameObject.name);
+                print("YIPEEEEE");
             }
         }
     }

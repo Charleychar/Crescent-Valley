@@ -30,44 +30,44 @@ public class JournalMechanicIntro : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && line2.enabled == false && journalTutorialCanvas == true)
-        {
-            line1.enabled = false;
-            line2.enabled = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && line2.enabled == true)
-        {
-            print("end of tutorial");
-            journalTutorialCanvas.enabled = false;
-            journalUI.enabled = false;
-            cutscenePlayer.PlayCutscene(idaFlower2);
-            line2.enabled = false;
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space) && line2.enabled == false && journalTutorialCanvas == true)
+    //    {
+    //        line1.enabled = false;
+    //        line2.enabled = true;
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.Space) && line2.enabled == true)
+    //    {
+    //        print("end of tutorial");
+    //        journalTutorialCanvas.enabled = false;
+    //        journalUI.enabled = false;
+    //        cutscenePlayer.PlayCutscene(idaFlower2);
+    //        line2.enabled = false;
+    //    }
+    //}
 
-    public void OnTriggerEnter(Collider collision)
-    {
-        //journalTutorialCanvas.enabled = true;
-        //StartJournalTutorial();
+    //public void OnTriggerEnter(Collider collision)
+    //{
+    //    //journalTutorialCanvas.enabled = true;
+    //    //StartJournalTutorial();
         
-        //if (collision.CompareTag(PlayerTag))
-        //{
-        //    journalTutorialCanvas.enabled = true;
-        //}
-    }
+    //    //if (collision.CompareTag(PlayerTag))
+    //    //{
+    //    //    journalTutorialCanvas.enabled = true;
+    //    //}
+    //}
 
-    public void StartJournalTutorial()
-    {
-        print("tutorial");
-        journalTutorialCanvas.enabled = true;
-        journalUI.enabled = true;
-        journal.GetComponent<Journal>().enabled = true;
-        player.GetComponent<PlayerMovement>().DisableMovement();
-        player.GetComponent<PlayerMovement>().enabled = false;
+    //public void StartJournalTutorial()
+    //{
+    //    print("tutorial");
+    //    journalTutorialCanvas.enabled = true;
+    //    journalUI.enabled = true;
+    //    journal.GetComponent<Journal>().enabled = true;
+    //    player.GetComponent<PlayerMovement>().DisableMovement();
+    //    player.GetComponent<PlayerMovement>().enabled = false;
 
-    }
+    //}
 
     //public void TutorialText()
     //{
