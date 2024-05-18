@@ -69,6 +69,7 @@ public class CutsceneManager : MonoBehaviour
 
     private CutsceneTrigger cutsceneTrigger;
     private TypingSounds typingSounds;
+    private PlayerMovement playerMovement;
 
     private bool CutsceneActive;
     private int CurrentCutsceneNo;
@@ -88,6 +89,7 @@ public class CutsceneManager : MonoBehaviour
         //dialoguePortrait.SetActive(false);
         cutsceneTrigger = FindObjectOfType<CutsceneTrigger>();
         typingSounds = FindObjectOfType<TypingSounds>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
 
@@ -104,6 +106,9 @@ public class CutsceneManager : MonoBehaviour
         inventory.SetActive(false);
         dialoguePortrait.SetActive(true);
         dialogueBox.SetActive(false);
+        playerMovement.DisableMovement();
+        playerMovement.enabled = false;
+
 
         if (cutsceneSlideDialogue[CurrentCutsceneNo] != "")
         {
@@ -159,6 +164,7 @@ public class CutsceneManager : MonoBehaviour
         StartCoroutine("FadeOut");  
         CutsceneActive = false;  
         CutsceneObject.SetActive(false);
+        playerMovement.enabled = true;
         PM.EnableMovement(gameObject.name);
         journal.SetActive(true);
         inventory.SetActive(true);

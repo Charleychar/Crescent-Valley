@@ -84,8 +84,10 @@ public class JournalEntries : MonoBehaviour
 
             yield return null;
             
-            StartCoroutine("EntryAddedUIDisappear");
+            //StartCoroutine("EntryAddedUIDisappear");
         }
+
+        StartCoroutine("EntryAddedUIDisappear");
     }
 
     private IEnumerator EntryAddedUIDisappear()

@@ -23,10 +23,12 @@ public class WallUI : MonoBehaviour
         {
             wallUI.enabled = true;
             playerMovement.DisableMovement();
+            playerMovement.enabled = false;
         }
         else if (Input.GetKeyDown(KeyCode.E) && wallUI.enabled == true)
         {
             wallUI.enabled = false;
+            playerMovement.enabled = true;
             playerMovement.EnableMovement(gameObject.name);
         }
     }

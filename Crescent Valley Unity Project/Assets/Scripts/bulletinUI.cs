@@ -29,6 +29,7 @@ public class bulletinUI : MonoBehaviour
         {
             BulletinUI();
             playerMovement.DisableMovement();
+            playerMovement.enabled = false;
         }
         else if (Input.GetKeyDown(KeyCode.E) && bulletin.enabled == true)
         {
@@ -36,6 +37,7 @@ public class bulletinUI : MonoBehaviour
             bulletinDay.enabled = false;
             bulletinNight.enabled = false;
 
+            playerMovement.enabled = true;
             playerMovement.EnableMovement(gameObject.name);
         }
     }
