@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - locked door
+  - hallway
   layers:
   - Default
   - TransparentFX

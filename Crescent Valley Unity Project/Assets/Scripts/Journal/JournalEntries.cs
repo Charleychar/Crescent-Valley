@@ -39,7 +39,9 @@ public class JournalEntries : MonoBehaviour
             entryAdded.enabled = true;
             print("enabled");
             audioSource.PlayOneShot(writingSound, volume);
-            
+
+            //entryAdded.color = new Color(entryAdded.color.r, entryAdded.color.g, entryAdded.color.b, _alpha);
+
             //print("interact");
             StartCoroutine("EntryAddedUIAppear");
             respectiveEntry.enabled = true;
@@ -48,7 +50,7 @@ public class JournalEntries : MonoBehaviour
     }
 
 
-    private void OnTriggerStay2D(Collider2D collision) 
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
 
         tree = true;

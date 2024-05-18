@@ -21,7 +21,11 @@ public class FlavourText : MonoBehaviour
 
     private int index;
 
+    
+
     bool canInteract = false;
+
+   
     
     
     
@@ -32,13 +36,16 @@ public class FlavourText : MonoBehaviour
         textBox.SetActive(false);
         text.text = string.Empty;
         typingSounds = FindObjectOfType<TypingSounds>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //print(hallwayCheck.InHallway);
         if (Input.GetKeyDown(KeyCode.E) && canInteract == true)
         {
+            //print("In FlavourText Update");
             if (gameObject.CompareTag("locked door"))
             {
                 audioSource.PlayOneShot(clip, volume);
@@ -61,14 +68,26 @@ public class FlavourText : MonoBehaviour
             }
             else
             {
-                StopAllCoroutines();
-                text.text = textLines[index];
-                textBox.SetActive(false);
-                playerMovement.enabled = true;
-                playerMovement.EnableMovement(gameObject.name);
-                print("YIPEEEEE");
+                EndTextBox();
+                //StopAllCoroutines();
+                //text.text = textLines[index];
+                //textBox.SetActive(false);
+                //playerMovement.enabled = true;
+                //playerMovement.EnableMovement(gameObject.name);
+                //print("YIPEEEEE");
             }
         }
+
+    }
+
+    private void EndTextBox()
+    {
+        StopAllCoroutines();
+        text.text = textLines[index];
+        textBox.SetActive(false);
+        playerMovement.enabled = true;
+        playerMovement.EnableMovement(gameObject.name);
+        print("YIPEEEEE");
     }
 
     private IEnumerator TypingEffect()
@@ -114,5 +133,8 @@ public class FlavourText : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         canInteract = false;
+        EndTextBox();
     }
+
+    
 }
