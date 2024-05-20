@@ -82,6 +82,11 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] Canvas dialogueCanvas;
     [SerializeField] GameObject dialogueBox;
 
+    private void Awake()
+    {
+        playerMovement = FindObjectOfType<PlayerMovement>();
+    }
+
     private void Start()
     {
         idaNoiseScene = FindObjectOfType<IdaNoiseScene>();
@@ -89,7 +94,6 @@ public class CutsceneManager : MonoBehaviour
         //dialoguePortrait.SetActive(false);
         cutsceneTrigger = FindObjectOfType<CutsceneTrigger>();
         typingSounds = FindObjectOfType<TypingSounds>();
-        playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
 

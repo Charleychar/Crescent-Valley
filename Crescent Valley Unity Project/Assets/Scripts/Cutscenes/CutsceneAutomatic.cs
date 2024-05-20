@@ -34,7 +34,7 @@ public class CutsceneAutomatic : MonoBehaviour
     {
         cutscenePlayer.clip = newClip;
         cutscenePlayer.Play();
-        PM.DisableMovement();
-        player.GetComponent<PlayerMovement>().enabled = false;
+        //PM.DisableMovement();
+        //player.GetComponent<PlayerMovement>().enabled = false;
     }
 }
