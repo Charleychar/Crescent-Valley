@@ -42,11 +42,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Inputs()
     {
-        float moveX = moveInput.x = Input.GetAxisRaw("Horizontal");
-        float moveY = moveInput.y = Input.GetAxisRaw("Vertical");
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
 
         if ((moveX == 0 && moveY == 0) && (moveInput.x !=0 || moveInput.y != 0))
         {
+            print("Player Stopped");
             lastMoveDirection = moveInput;
         }
 

@@ -24,6 +24,7 @@ public class FlavourText : MonoBehaviour
     
 
     bool canInteract = false;
+    bool textActive = false;
 
    
     
@@ -43,21 +44,27 @@ public class FlavourText : MonoBehaviour
     void Update()
     {
         //print(hallwayCheck.InHallway);
-        if (Input.GetKeyDown(KeyCode.E) && canInteract == true)
+        if (Input.GetKeyDown(KeyCode.E) && canInteract == true && textActive == false)
         {
+            textActive = true;
+
             //print("In FlavourText Update");
             if (gameObject.CompareTag("locked door"))
             {
                 audioSource.PlayOneShot(clip, volume);
-            } 
+            }
             textCanvas.enabled = true;
             textBox.SetActive(true);
 
             StartDialogue();
-            
+
             playerMovement.DisableMovement();
             playerMovement.enabled = false;
             //playerMovement.enabled = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.E) && textActive == true)
+        {
+            return;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && canInteract == true)
@@ -77,6 +84,8 @@ public class FlavourText : MonoBehaviour
                 //print("YIPEEEEE");
             }
         }
+
+
 
     }
 

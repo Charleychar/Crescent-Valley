@@ -58,6 +58,15 @@ TagManager:
   - name: Rooms
     uniqueID: 3533495261
     locked: 0
+  - name: furniture level -2
+    uniqueID: 2227099705
+    locked: 0
+  - name: furniture level -1
+    uniqueID: 1731884353
+    locked: 0
+  - name: furniture level 0
+    uniqueID: 4204146515
+    locked: 0
   - name: house
     uniqueID: 3803663333
     locked: 0

@@ -26,6 +26,7 @@ public class DialogueInteraction : MonoBehaviour
 
 
     bool canInteract = false;
+    bool textActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,8 +44,9 @@ public class DialogueInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canInteract == true)
+        if (Input.GetKeyDown(KeyCode.E) && canInteract == true && textActive == false)
         {
+            textActive = true;
             dialogueCanvas.enabled = true;
             dialogueBox.SetActive(true);
 
@@ -52,6 +54,10 @@ public class DialogueInteraction : MonoBehaviour
             playerMovement.DisableMovement();
             playerMovement.enabled = false;
             //DisplayDialogue();
+        }
+        else if (Input.GetKeyDown(KeyCode.E) && textActive == true)
+        {
+            return;
         }
 
         //DisplayDialogue();
