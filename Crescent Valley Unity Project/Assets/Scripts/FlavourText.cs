@@ -97,6 +97,7 @@ public class FlavourText : MonoBehaviour
         playerMovement.enabled = true;
         playerMovement.EnableMovement(gameObject.name);
         print("YIPEEEEE");
+        textActive = false;
     }
 
     private IEnumerator TypingEffect()
