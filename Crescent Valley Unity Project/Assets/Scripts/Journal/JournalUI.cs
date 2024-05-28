@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JournalUI : MonoBehaviour
 {
@@ -25,15 +26,19 @@ public class JournalUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //open/close journal
-        if (Input.GetKeyDown(KeyCode.Tab) && journalUI.enabled == false)
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        string sceneName = currentScene.name;
+
+        //open/close journal 
+        if (Input.GetKeyDown(KeyCode.Tab) && journalUI.enabled == false && sceneName == "Main Game")
         {
             journalUI.enabled = true;
             journalFunction.enabled = true;
             player.GetComponent<PlayerMovement>().enabled = false;
             audioSource.PlayOneShot(gettingJournalOut, volume);
         }
-        else if (Input.GetKeyDown(KeyCode.Tab) && journalUI.enabled == true)
+        else if (Input.GetKeyDown(KeyCode.Tab) && journalUI.enabled == true && sceneName == "Main Game")
         {
             journalUI.enabled = false;
             journalFunction.enabled = false;

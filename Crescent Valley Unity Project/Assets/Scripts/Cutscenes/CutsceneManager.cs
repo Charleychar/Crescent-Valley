@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class CutsceneManager : MonoBehaviour
@@ -51,6 +52,7 @@ public class CutsceneManager : MonoBehaviour
     }*/
 
     private IdaNoiseScene idaNoiseScene;
+    private EndScreen endScreen;
 
     [SerializeField] GameObject CutsceneObject;
     [SerializeField] PlayerMovement PM;
@@ -66,6 +68,8 @@ public class CutsceneManager : MonoBehaviour
 
     [SerializeField] GameObject inventory;
     [SerializeField] GameObject journal;
+
+    [SerializeField] Canvas journalCorner;
 
     private CutsceneTrigger cutsceneTrigger;
     private TypingSounds typingSounds;
@@ -90,6 +94,7 @@ public class CutsceneManager : MonoBehaviour
     private void Start()
     {
         idaNoiseScene = FindObjectOfType<IdaNoiseScene>();
+        endScreen = FindObjectOfType<EndScreen>();
         //portraitManager = FindObjectOfType<DialoguePortraits>();
         //dialoguePortrait.SetActive(false);
         cutsceneTrigger = FindObjectOfType<CutsceneTrigger>();
@@ -112,6 +117,7 @@ public class CutsceneManager : MonoBehaviour
         dialogueBox.SetActive(false);
         playerMovement.DisableMovement();
         playerMovement.enabled = false;
+        journalCorner.enabled = false;
 
 
         if (cutsceneSlideDialogue[CurrentCutsceneNo] != "")
@@ -172,6 +178,7 @@ public class CutsceneManager : MonoBehaviour
         PM.EnableMovement(gameObject.name);
         journal.SetActive(true);
         inventory.SetActive(true);
+        journalCorner.enabled = true;
         //dialoguePortrait.SetActive(false);
 
         if (cutsceneSlideDialogue[CurrentCutsceneNo] != "")
@@ -192,6 +199,10 @@ public class CutsceneManager : MonoBehaviour
             yield return null;  
         }
 
+        idaNoiseScene.StartIdaScene();
+        CheckEndScreen();
+        //endScreen.ShowEndScreen();
+
         StartCoroutine("FadeIn");
     }
 
@@ -203,7 +214,7 @@ public class CutsceneManager : MonoBehaviour
             yield return null;
         }
 
-        idaNoiseScene.StartIdaScene();
+        //idaNoiseScene.StartIdaScene();
     }
 
     private IEnumerator TypingEffect()
@@ -214,5 +225,22 @@ public class CutsceneManager : MonoBehaviour
             typingSounds.PlayTypingSFX();
             yield return new WaitForSeconds(textSpeed);
         }
+    }
+
+    private void CheckEndScreen()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        string sceneName = currentScene.name;
+
+        if (sceneName == "Chapter 2")
+        {
+            endScreen.ShowEndScreen();
+        }
+        else
+        {
+            return;
+        }
+            
     }
 }
