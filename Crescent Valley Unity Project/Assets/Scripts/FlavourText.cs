@@ -66,6 +66,10 @@ public class FlavourText : MonoBehaviour
         {
             return;
         }
+        else if (Input.GetKeyDown(KeyCode.E) && canInteract == true && textActive == false && gameObject.CompareTag("scene check"))
+        {
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && canInteract == true)
         {

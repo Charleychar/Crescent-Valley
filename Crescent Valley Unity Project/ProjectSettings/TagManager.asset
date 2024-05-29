@@ -6,6 +6,7 @@ TagManager:
   tags:
   - locked door
   - hallway
+  - scene check
   layers:
   - Default
   - TransparentFX
